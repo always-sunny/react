@@ -61,15 +61,9 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _testdata = __webpack_require__(/*! ./testdata */ 181);
-	
-	var _testdata2 = _interopRequireDefault(_testdata);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	console.log(_testdata2.default);
-	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { contacts: _testdata2.default.contacts }), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -22025,7 +22019,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22042,6 +22036,10 @@
 	
 	var _ContactsList2 = _interopRequireDefault(_ContactsList);
 	
+	var _testData = __webpack_require__(/*! ../testData */ 181);
+	
+	var _testData2 = _interopRequireDefault(_testData);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22051,31 +22049,47 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+		_inherits(App, _React$Component);
 	
-	  function App() {
-	    _classCallCheck(this, App);
+		function App(props) {
+			_classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	  }
+			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Contacts List'
-	        ),
-	        _react2.default.createElement(_ContactsList2.default, { contacts: this.props.contacts })
-	      );
-	    }
-	  }]);
+			_this.state = { contacts: [] };
+			return _this;
+		}
 	
-	  return App;
+		_createClass(App, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//timers,listeners
+				this.setState({
+					contacts: _testData2.default.contacts
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				//clean timers, listeners 
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h1',
+						null,
+						'Contacts List'
+					),
+					_react2.default.createElement(_ContactsList2.default, { contacts: this.state.contacts })
+				);
+			}
+		}]);
+	
+		return App;
 	}(_react2.default.Component);
 	
 	exports.default = App;
@@ -22129,6 +22143,18 @@
 			};
 			return _this;
 		}
+	
+		// componentDidMount(){
+		// 	//timers,listeners
+		// 	this.setState({
+		// 		contacts: props.contacts
+		// 	});
+		// }
+	
+		// componentWillUnmount(){
+		// 	//clean timers, listeners 
+		// }
+	
 	
 		_createClass(ContactsList, [{
 			key: 'updateSearch',
@@ -22232,7 +22258,7 @@
 /***/ },
 /* 181 */
 /*!***************************!*\
-  !*** ./src/testdata.json ***!
+  !*** ./src/testData.json ***!
   \***************************/
 /***/ function(module, exports) {
 

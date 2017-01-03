@@ -5,11 +5,24 @@ import Contact from './Contact';
 class ContactsList extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			search: "",
 			contacts: props.contacts
 		};
 	}
+
+	// componentDidMount(){
+	// 	//timers,listeners
+	// 	this.setState({
+	// 		contacts: props.contacts
+	// 	});
+	// }
+
+	// componentWillUnmount(){
+	// 	//clean timers, listeners 
+	// }
+
 
 	updateSearch(event) {
 		this.setState({search: event.target.value.substr(0,33)});
@@ -30,6 +43,7 @@ class ContactsList extends React.Component {
 
 	
 	render(){
+		
 
 		let filteredContacts = this.state.contacts.filter(
 				(contact) => {

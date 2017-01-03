@@ -1,5 +1,5 @@
 import config from './config';
-import apiRouter from './api';
+import apiRouter from './api/index';
 import express from 'express';
 
 const server = express();

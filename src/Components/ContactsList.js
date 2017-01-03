@@ -8,20 +8,8 @@ class ContactsList extends React.Component {
 
 		this.state = {
 			search: "",
-			contacts: props.contacts
 		};
 	}
-
-	// componentDidMount(){
-	// 	//timers,listeners
-	// 	this.setState({
-	// 		contacts: props.contacts
-	// 	});
-	// }
-
-	// componentWillUnmount(){
-	// 	//clean timers, listeners 
-	// }
 
 
 	updateSearch(event) {
@@ -45,7 +33,7 @@ class ContactsList extends React.Component {
 	render(){
 		
 
-		let filteredContacts = this.state.contacts.filter(
+		let filteredContacts = this.props.contacts.filter(
 				(contact) => {
 					return contact.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
 				}

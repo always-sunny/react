@@ -22138,23 +22138,10 @@
 			var _this = _possibleConstructorReturn(this, (ContactsList.__proto__ || Object.getPrototypeOf(ContactsList)).call(this, props));
 	
 			_this.state = {
-				search: "",
-				contacts: props.contacts
+				search: ""
 			};
 			return _this;
 		}
-	
-		// componentDidMount(){
-		// 	//timers,listeners
-		// 	this.setState({
-		// 		contacts: props.contacts
-		// 	});
-		// }
-	
-		// componentWillUnmount(){
-		// 	//clean timers, listeners 
-		// }
-	
 	
 		_createClass(ContactsList, [{
 			key: 'updateSearch',
@@ -22179,7 +22166,7 @@
 			value: function render() {
 				var _this2 = this;
 	
-				var filteredContacts = this.state.contacts.filter(function (contact) {
+				var filteredContacts = this.props.contacts.filter(function (contact) {
 					return contact.name.toLowerCase().indexOf(_this2.state.search.toLowerCase()) !== -1;
 				});
 				return _react2.default.createElement(

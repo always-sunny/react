@@ -61,27 +61,15 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
+	var _testdata = __webpack_require__(/*! ./testdata */ 181);
+	
+	var _testdata2 = _interopRequireDefault(_testdata);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var contacts = [{
-		id: 1,
-		name: 'Ryan',
-		phone: '916 206 4207'
-	}, {
-		id: 2,
-		name: 'Dane',
-		phone: '916 716 5031'
-	}, {
-		id: 3,
-		name: 'Colin',
-		phone: '916 742 0423'
-	}, {
-		id: 4,
-		name: 'Tommy',
-		phone: '916 741 9086'
-	}];
+	console.log(_testdata2.default);
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { contacts: contacts }), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { contacts: _testdata2.default.contacts }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -22240,6 +22228,38 @@
 	};
 	
 	exports.default = Contact;
+
+/***/ },
+/* 181 */
+/*!***************************!*\
+  !*** ./src/testdata.json ***!
+  \***************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+		"contacts": [
+			{
+				"id": 1,
+				"name": "Ryan",
+				"phone": "916 206 4207"
+			},
+			{
+				"id": 2,
+				"name": "Dane",
+				"phone": "916 716 5031"
+			},
+			{
+				"id": 3,
+				"name": "Colin",
+				"phone": "916 742 0423"
+			},
+			{
+				"id": 4,
+				"name": "Tommy",
+				"phone": "916 741 9086"
+			}
+		]
+	};
 
 /***/ }
 /******/ ]);

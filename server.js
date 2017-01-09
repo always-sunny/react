@@ -13,10 +13,12 @@ server.use(sassMiddleware({ //sassMiddleware is a function
 
 server.set('view engine', 'ejs');
 
+
+
 server.get('/', (req, res) => {
-	res.render('index', {
-		content: "Hello Express and EJS!"
-	});
+		res.render('index', {
+		content: 'Welcome to EJS'
+	})
 });
 
 server.use('/api', apiRouter);

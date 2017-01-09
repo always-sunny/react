@@ -63,7 +63,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { initialMusic: [] }), document.getElementById('root'));
 
 /***/ },
 /* 1 */

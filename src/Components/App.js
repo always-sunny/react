@@ -2,15 +2,15 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import MusicList from './MusicList';
 import axios from 'axios';
-import data from '../testData';
 import Header from './Header';
+import data from '../testData';
 
 class App extends React.Component {
 	
 	constructor(props) {
     	super(props);
     	this.state = {
-    		music: [],
+    		music: this.props.initialMusic,
     		headerTitle: "THE DAILY VIBE"
     	};
   	}
@@ -18,17 +18,17 @@ class App extends React.Component {
 
 	componentDidMount(){
     
-		axios.get('/api/music')
-			.then(resp => {
-				this.setState({
-          music: resp.data.music
-        });
-			})
-			.catch(console.error)
+		// axios.get('/api/music')
+		// 	.then(resp => {
+		// 		this.setState({
+  //         music: resp.data.music
+  //       });
+		// 	})
+		// 	.catch(console.error)
 		//timers,listeners
-	// 	this.setState({
-	// 				music: data.music
-	// 			});
+		this.setState({
+					music: data.music
+				});
 	}
 
 	componentWillUnmount(){

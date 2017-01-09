@@ -4,6 +4,6 @@ import App from './components/App';
 
 
 ReactDOM.render(
-	<App />,
+	<App initialMusic={[]}/>,
 	document.getElementById('root')
 );﻿

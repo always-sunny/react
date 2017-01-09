@@ -1,22 +1,34 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import ContactsList from './ContactsList';
+import MusicList from './MusicList';
+import axios from 'axios';
 import data from '../testData';
-
+import Header from './Header';
 
 class App extends React.Component {
 	
 	constructor(props) {
     	super(props);
-    	this.state = {contacts: []};
+    	this.state = {
+    		music: [],
+    		headerTitle: "THE DAILY VIBE"
+    	};
   	}
 
 
 	componentDidMount(){
+    
+		axios.get('/api/music')
+			.then(resp => {
+				this.setState({
+          music: resp.data.music
+        });
+			})
+			.catch(console.error)
 		//timers,listeners
-		this.setState({
-			contacts: data.contacts
-		});
+	// 	this.setState({
+	// 				music: data.music
+	// 			});
 	}
 
 	componentWillUnmount(){
@@ -25,10 +37,20 @@ class App extends React.Component {
 
 	render(){
   		return (
-   			<div>
-    			<h1>Contacts List</h1>
-    			<ContactsList contacts={this.state.contacts}/>
+   			<div className="App">
+   				
+   				<div className="Header">
+    				<Header headerTitle={this.state.headerTitle}/>
+    			</div>	
     			
+    			<div className="Main">
+					<MusicList music={this.state.music}/>
+    			</div>
+    			
+   				<div className="Footer">
+   					...
+   				</div>
+
    			</div>
    		)
  	}

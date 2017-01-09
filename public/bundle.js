@@ -23855,26 +23855,1242 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"contacts": [
+		"music": [
 			{
+				"album": "MoM And DaD",
+				"artist": "Cherub",
 				"id": 1,
-				"name": "Ryan",
-				"phone": "916 206 4207"
+				"song": "Doses And Mimosas"
 			},
 			{
+				"album": "MoM And DaD",
+				"artist": "Cherub",
 				"id": 2,
-				"name": "Dane",
-				"phone": "916 716 5031"
+				"song": "XOXO"
 			},
 			{
+				"album": "1996",
+				"artist": "The Wombats",
 				"id": 3,
-				"name": "Colin",
-				"phone": "916 742 0423"
+				"song": "1996"
 			},
 			{
+				"album": "Get busy living",
+				"artist": "GoldFish",
 				"id": 4,
-				"name": "Tommy",
-				"phone": "916 741 9086"
+				"song": "Get busy living (feat  Emily Bruce)"
+			},
+			{
+				"album": "Goldfish Perceptions of Pacha",
+				"artist": "GoldFish",
+				"id": 5,
+				"song": "Hold Tight"
+			},
+			{
+				"album": "Beaches",
+				"artist": "HWYS",
+				"id": 6,
+				"song": "Stranger"
+			},
+			{
+				"album": "Backroad (feat  Nevve)",
+				"artist": "VOKES, Nevve",
+				"id": 7,
+				"song": "Backroad (feat  Nevve)"
+			},
+			{
+				"album": "Dive In",
+				"artist": "Make Love",
+				"id": 8,
+				"song": "Dive In"
+			},
+			{
+				"album": "Lost In New York",
+				"artist": "Penguin Prison",
+				"id": 9,
+				"song": "Don't Tell Me How It Ends"
+			},
+			{
+				"album": "Run (Remixes)",
+				"artist": "AWOLNATION",
+				"id": 10,
+				"song": "I Am (Steve Aoki Remix)"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 11,
+				"song": "Paradise Awaits"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 12,
+				"song": "Superfriends"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 13,
+				"song": "Cocaine Model"
+			},
+			{
+				"album": "Take The Heat Off Me",
+				"artist": "Boney M ",
+				"id": 14,
+				"song": "Daddy Cool"
+			},
+			{
+				"album": "Porcelain / Wolf",
+				"artist": "Skott",
+				"id": 15,
+				"song": "Porcelain"
+			},
+			{
+				"album": "Indian Summer",
+				"artist": "HOAX",
+				"id": 16,
+				"song": "Indian Summer"
+			},
+			{
+				"album": "Only (Kaskade x Lipless Remix)",
+				"artist": "RY X, Kaskade, Lipless",
+				"id": 17,
+				"song": "Only - Kaskade x Lipless Remix"
+			},
+			{
+				"album": "Beat Tape 2",
+				"artist": "Tom Misch, Zak Abel",
+				"id": 18,
+				"song": "Beautiful Escape"
+			},
+			{
+				"album": "All Possible Futures",
+				"artist": "Miami Horror, Future Unlimited",
+				"id": 19,
+				"song": "Stranger"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 20,
+				"song": "Surfs Up"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 21,
+				"song": "Never Come Down"
+			},
+			{
+				"album": "Peer Pressure",
+				"artist": "Jupiter Project",
+				"id": 22,
+				"song": "Peer Pressure"
+			},
+			{
+				"album": "Doubts",
+				"artist": "Pablo Neptuno, mangeymane",
+				"id": 23,
+				"song": "Doubts"
+			},
+			{
+				"album": "Caught Alone",
+				"artist": "Color Card",
+				"id": 24,
+				"song": "Caught Alone"
+			},
+			{
+				"album": "Life of the Party EP",
+				"artist": "Ghostland Observatory",
+				"id": 25,
+				"song": "Life of the Party"
+			},
+			{
+				"album": "Ditch",
+				"artist": "Gus Dapperton",
+				"id": 26,
+				"song": "Ditch"
+			},
+			{
+				"album": "Broken Record (Louis the Child Remix) [feat  Joni Fatora]",
+				"artist": "Soysauce, Joni Fatora",
+				"id": 27,
+				"song": "Broken Record (Louis the Child Remix) [feat  Joni Fatora]"
+			},
+			{
+				"album": "Rogue Waves",
+				"artist": "Miguel",
+				"id": 28,
+				"song": "waves - Tame Impala Remix"
+			},
+			{
+				"album": "OffOffOff",
+				"artist": "autolaser",
+				"id": 29,
+				"song": "OffOffOff"
+			},
+			{
+				"album": "On Belay Belay On",
+				"artist": "Wilderness Survival",
+				"id": 30,
+				"song": "I'm the One"
+			},
+			{
+				"album": "Seeds in Sand",
+				"artist": "Elder Island",
+				"id": 31,
+				"song": "Black Fur"
+			},
+			{
+				"album": "Venice",
+				"artist": "Anderson  Paak",
+				"id": 32,
+				"song": "Off The Ground"
+			},
+			{
+				"album": "Follow",
+				"artist": "Memorecks, Jenna Pemkowski",
+				"id": 33,
+				"song": "Bruce Wayne"
+			},
+			{
+				"album": "Centerfold",
+				"artist": "MOTHXR",
+				"id": 34,
+				"song": "Stranger"
+			},
+			{
+				"album": "Untouchable Skin",
+				"artist": "Grenda",
+				"id": 35,
+				"song": "Let Me Know"
+			},
+			{
+				"album": "If I Was Your Boy",
+				"artist": "Glassio",
+				"id": 36,
+				"song": "If I Was Your Boy"
+			},
+			{
+				"album": "Ocelot",
+				"artist": "Caleb Groh",
+				"id": 37,
+				"song": "Vocelot"
+			},
+			{
+				"album": "Lude Jaw",
+				"artist": "RINSE",
+				"id": 38,
+				"song": "Lude Jaw"
+			},
+			{
+				"album": "Living for the Dream",
+				"artist": "Dylan Kelly",
+				"id": 39,
+				"song": "I Think I Like You"
+			},
+			{
+				"album": "1998",
+				"artist": "Chet Faker, Banks",
+				"id": 40,
+				"song": "1998"
+			},
+			{
+				"album": "Where the Light Shines Most",
+				"artist": "Avindale",
+				"id": 41,
+				"song": "Where the Light Shines Most"
+			},
+			{
+				"album": "Midnight Render (Nausea Rebuild)",
+				"artist": "Craft Spells, Aimai",
+				"id": 42,
+				"song": "Changing Faces - aimai Remix"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 43,
+				"song": "More Like You"
+			},
+			{
+				"album": "Chapter One",
+				"artist": "Joe Hertz, Amber-Simone",
+				"id": 44,
+				"song": "Stay Lost"
+			},
+			{
+				"album": "Intoxication",
+				"artist": "Max Frost",
+				"id": 45,
+				"song": "Paranoia"
+			},
+			{
+				"album": "GENERATIONWHY",
+				"artist": "ZHU",
+				"id": 46,
+				"song": "Hometown Girl"
+			},
+			{
+				"album": "Penguin Prison",
+				"artist": "Penguin Prison",
+				"id": 47,
+				"song": "Dont Fuck With My Money"
+			},
+			{
+				"album": "Lost In New York",
+				"artist": "Penguin Prison",
+				"id": 48,
+				"song": "Calling Out"
+			},
+			{
+				"album": "One Too Far (Shy Girls Remix)",
+				"artist": "Jack and Eliza",
+				"id": 49,
+				"song": "One Too Far - Shy Girls Remix"
+			},
+			{
+				"album": "Stop for Nothing - Single",
+				"artist": "courtship ",
+				"id": 50,
+				"song": "Stop for Nothing"
+			},
+			{
+				"album": "When I'm Down",
+				"artist": "Whethan, Oliver Tree",
+				"id": 51,
+				"song": "When I'm Down"
+			},
+			{
+				"album": "Escape",
+				"artist": "Zoology",
+				"id": 52,
+				"song": "Escape"
+			},
+			{
+				"album": "Aurora Borealis (Luca Lush Remix)",
+				"artist": "The Griswolds",
+				"id": 53,
+				"song": "Aurora Borealis (Luca Lush Remix)"
+			},
+			{
+				"album": "Lightweight",
+				"artist": "Obliques",
+				"id": 54,
+				"song": "Lightweight"
+			},
+			{
+				"album": "Vibe",
+				"artist": "Melvv",
+				"id": 55,
+				"song": "Vibe"
+			},
+			{
+				"album": "Intoxication",
+				"artist": "Max Frost",
+				"id": 56,
+				"song": "Withdrawal"
+			},
+			{
+				"album": "Sunlit Youth",
+				"artist": "Local Natives",
+				"id": 57,
+				"song": "Past Lives"
+			},
+			{
+				"album": "Life Of Leisure",
+				"artist": "Washed Out",
+				"id": 58,
+				"song": "Feel It All Around"
+			},
+			{
+				"album": "Temporary Love",
+				"artist": "The Brinks",
+				"id": 59,
+				"song": "Temporary Love"
+			},
+			{
+				"album": "Dissolve",
+				"artist": "Absofacto",
+				"id": 60,
+				"song": "Dissolve"
+			},
+			{
+				"album": "Bruk Bruk (I Need Your Lovin)",
+				"artist": "Dillon Francis",
+				"id": 61,
+				"song": "Bruk Bruk (I Need Your Lovin)"
+			},
+			{
+				"album": "Need In Me",
+				"artist": "Flashmob",
+				"id": 62,
+				"song": "Need In Me"
+			},
+			{
+				"album": "Embracing Me (Remixes)",
+				"artist": "SAFIA",
+				"id": 63,
+				"song": "Embracing Me - Mazde Remix"
+			},
+			{
+				"album": "Metroplane",
+				"artist": "Metroplane",
+				"id": 64,
+				"song": "Over Me"
+			},
+			{
+				"album": "Disco",
+				"artist": "Strange Club",
+				"id": 65,
+				"song": "Disco"
+			},
+			{
+				"album": "Dear To Me",
+				"artist": "Electric Guest",
+				"id": 66,
+				"song": "Dear To Me"
+			},
+			{
+				"album": "Take It Back",
+				"artist": "NotNo",
+				"id": 67,
+				"song": "Take It Back"
+			},
+			{
+				"album": "Shine",
+				"artist": "Wildhart",
+				"id": 68,
+				"song": "Is It Possible"
+			},
+			{
+				"album": "Arrow (Kauf Remix)",
+				"artist": "Grapell, Kauf",
+				"id": 69,
+				"song": "Arrow - Kauf Remix"
+			},
+			{
+				"album": "Strange Attractor - EP",
+				"artist": "Violet Sands",
+				"id": 70,
+				"song": "Airy Canary"
+			},
+			{
+				"album": "Bad Manion's June Gloom",
+				"artist": "Bad Manion",
+				"id": 71,
+				"song": "The Internet Is for Losers"
+			},
+			{
+				"album": "Hymnals (RAC Mix)",
+				"artist": "Grizfolk",
+				"id": 72,
+				"song": "Hymnals - RAC Mix"
+			},
+			{
+				"album": "Tragic on the Dancefloor (Louis La Roche Remix)",
+				"artist": "Girl Friend, Louis La Roche",
+				"id": 73,
+				"song": "Tragic on the Dancefloor (Louis La Roche Remix)"
+			},
+			{
+				"album": "Poolside",
+				"artist": "Moons of Mars",
+				"id": 74,
+				"song": "Poolside"
+			},
+			{
+				"album": "Broken Bells",
+				"artist": "Broken Bells",
+				"id": 75,
+				"song": "The High Road"
+			},
+			{
+				"album": "Future Disco, Vol  5 - Downtown Express",
+				"artist": "Penguin Prison",
+				"id": 76,
+				"song": "Multi Millionaire - Prince Language Instrumental Remix"
+			},
+			{
+				"album": "Figure - EP",
+				"artist": "Anoraak",
+				"id": 77,
+				"song": "Heart Out"
+			},
+			{
+				"album": "Wildfire",
+				"artist": "Scavenger Hunt",
+				"id": 78,
+				"song": "Wildfire (Bee's Knees Remix)"
+			},
+			{
+				"album": "All the Best",
+				"artist": "Nikitch, Kuna Maze",
+				"id": 79,
+				"song": "Chemelin"
+			},
+			{
+				"album": "Only Temporary (Solidisco Remix)",
+				"artist": "Bronze Radio Return, Solidisco",
+				"id": 80,
+				"song": "Only Temporary (Solidisco Remix)"
+			},
+			{
+				"album": "Till You Let Go",
+				"artist": "Max Future",
+				"id": 81,
+				"song": "Till You Let Go"
+			},
+			{
+				"album": "Hey Maria - EP",
+				"artist": "Klangkarussell",
+				"id": 82,
+				"song": "Hey Maria"
+			},
+			{
+				"album": "Someone To Talk About",
+				"artist": "Phantoms, Grace Mitchell",
+				"id": 83,
+				"song": "Someone To Talk About"
+			},
+			{
+				"album": "Push - Single",
+				"artist": "Derek Pope",
+				"id": 84,
+				"song": "Push"
+			},
+			{
+				"album": "Big Black Delta",
+				"artist": "Big Black Delta",
+				"id": 85,
+				"song": "Money Rain Down"
+			},
+			{
+				"album": "Touch",
+				"artist": "Shift K3Y, Oxford",
+				"id": 86,
+				"song": "Touch - Oxford Remix"
+			},
+			{
+				"album": "River (BURNS Remix)",
+				"artist": "Bishop Briggs",
+				"id": 87,
+				"song": "River - BURNS Remix"
+			},
+			{
+				"album": "Miracle Mile",
+				"artist": "STRFKR",
+				"id": 88,
+				"song": "While I'm Alive"
+			},
+			{
+				"album": "Not Too Fast - Single",
+				"artist": "Plage 84",
+				"id": 89,
+				"song": "Not Too Fast"
+			},
+			{
+				"album": "Passive Me, Aggressive You",
+				"artist": "The Naked And Famous",
+				"id": 90,
+				"song": "Young Blood"
+			},
+			{
+				"album": "Ipanema Beach House Remixes",
+				"artist": "Tobtok, Cesare",
+				"id": 91,
+				"song": "Savanna - Cesare Remix"
+			},
+			{
+				"album": "Osama Obama",
+				"artist": "Larytta",
+				"id": 92,
+				"song": "Osama Obama"
+			},
+			{
+				"album": "Never Ever",
+				"artist": "STRFKR",
+				"id": 93,
+				"song": "Never Ever"
+			},
+			{
+				"album": "Spectrums",
+				"artist": "Au Revoir Simone",
+				"id": 94,
+				"song": "Somebody Who (Nzca Remix)"
+			},
+			{
+				"album": "Melophobia",
+				"artist": "Cage The Elephant",
+				"id": 95,
+				"song": "Cigarette Daydreams"
+			},
+			{
+				"album": "iii",
+				"artist": "Miike Snow",
+				"id": 96,
+				"song": "Genghis Khan"
+			},
+			{
+				"album": "Future Protocol",
+				"artist": "Argonaut And Wasp",
+				"id": 97,
+				"song": "Higher Ground"
+			},
+			{
+				"album": "What Went Down",
+				"artist": "Foals",
+				"id": 98,
+				"song": "Mountain At My Gates"
+			},
+			{
+				"album": "The Wilder Mile",
+				"artist": "Freedom Fry",
+				"id": 99,
+				"song": "The Wilder Mile"
+			},
+			{
+				"album": "Dream",
+				"artist": "Autograf",
+				"id": 100,
+				"song": "Dream"
+			},
+			{
+				"album": "Starfucker",
+				"artist": "STRFKR",
+				"id": 101,
+				"song": "Isabella of Castile"
+			},
+			{
+				"album": "Jupiter (2012)",
+				"artist": "STRFKR",
+				"id": 102,
+				"song": "Girls Just Want to Have Fun"
+			},
+			{
+				"album": "Hanging Gardens",
+				"artist": "Classixx",
+				"id": 103,
+				"song": "A Fax From The Beach"
+			},
+			{
+				"album": "Pitch Black (Piecey Remix)",
+				"artist": "Mazde, LissA, Piecey",
+				"id": 104,
+				"song": "Pitch Black - Piecey Remix"
+			},
+			{
+				"album": "1749",
+				"artist": "Lemaitre",
+				"id": 105,
+				"song": "Day Two"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix (Remix Collection)",
+				"artist": "Phoenix",
+				"id": 106,
+				"song": "Fences - 25 Hrs a Day Remix"
+			},
+			{
+				"album": "It's Never Been Like That (Deluxe Version)",
+				"artist": "Phoenix",
+				"id": 107,
+				"song": "Long Distance Call"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix",
+				"artist": "Phoenix",
+				"id": 108,
+				"song": "Lisztomania"
+			},
+			{
+				"album": "West Of The West",
+				"artist": "Goldroom",
+				"id": 109,
+				"song": "Silhouette"
+			},
+			{
+				"album": "Falling (Whethan Redo) [feat  Whethan]",
+				"artist": "Opia, Whethan",
+				"id": 110,
+				"song": "Falling (Whethan Redo) [feat  Whethan]"
+			},
+			{
+				"album": "Open Your Eyes",
+				"artist": "STRFKR",
+				"id": 111,
+				"song": "Open Your Eyes"
+			},
+			{
+				"album": "Back to You - Single",
+				"artist": "Kolidescopes",
+				"id": 112,
+				"song": "Back to You"
+			},
+			{
+				"album": "My New Friend",
+				"artist": "Carousel",
+				"id": 113,
+				"song": "My New Friend"
+			},
+			{
+				"album": "The Lumineers",
+				"artist": "The Lumineers",
+				"id": 114,
+				"song": "Ho Hey"
+			},
+			{
+				"album": "It's Strange",
+				"artist": "Louis The Child, K Flay",
+				"id": 115,
+				"song": "It's Strange"
+			},
+			{
+				"album": "Flume Deluxe Edition",
+				"artist": "Flume, Moon Holiday",
+				"id": 116,
+				"song": "Insane"
+			},
+			{
+				"album": "Say It Here, While It's Safe",
+				"artist": "Kweku Collins",
+				"id": 117,
+				"song": "Lonely Lullabies"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Karl Kling",
+				"id": 118,
+				"song": "Repeating Motion"
+			},
+			{
+				"album": "Port Of Morrow",
+				"artist": "The Shins",
+				"id": 119,
+				"song": "Simple Song"
+			},
+			{
+				"album": "Stereo Hype",
+				"artist": "VHS Collection",
+				"id": 120,
+				"song": "Ghost"
+			},
+			{
+				"album": "Year of the Caprese",
+				"artist": "Cherub",
+				"id": 121,
+				"song": "Doses And Mimosas"
+			},
+			{
+				"album": "Atlas (Remixes) - EP",
+				"artist": "Les Gordon, Douchka",
+				"id": 122,
+				"song": "Atlas - Douchka Remix"
+			},
+			{
+				"album": "Never Gonna Take You Back",
+				"artist": "Satchmode",
+				"id": 123,
+				"song": "Never Gonna Take You Back"
+			},
+			{
+				"album": "Cant Let Go, Juno",
+				"artist": "Kishi Bashi",
+				"id": 124,
+				"song": "Cant Let Go, Juno"
+			},
+			{
+				"album": "Life Itself",
+				"artist": "Glass Animals",
+				"id": 125,
+				"song": "Life Itself"
+			},
+			{
+				"album": "Wild Horses",
+				"artist": "Bishop Briggs",
+				"id": 126,
+				"song": "Wild Horses"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Pink Feathers",
+				"id": 127,
+				"song": "Seventeen"
+			},
+			{
+				"album": "Reptilians",
+				"artist": "STRFKR",
+				"id": 128,
+				"song": "Quality Time"
+			},
+			{
+				"album": "Miracle Mile",
+				"artist": "STRFKR",
+				"id": 129,
+				"song": "Atlantis"
+			},
+			{
+				"album": "Down To Earth",
+				"artist": "Flight Facilities, Giselle",
+				"id": 130,
+				"song": "Crave You"
+			},
+			{
+				"album": "Behaviors",
+				"artist": "Behaviors",
+				"id": 131,
+				"song": "Don't Fight It"
+			},
+			{
+				"album": "Show Your Colors (PLSAndTY Remix)",
+				"artist": "Genevieve, PLSAndTY",
+				"id": 132,
+				"song": "Show Your Colors (PLSAndTY Remix)"
+			},
+			{
+				"album": "Fade",
+				"artist": "Alan Walker",
+				"id": 133,
+				"song": "Fade"
+			},
+			{
+				"album": "Lessons",
+				"artist": "Holy Models",
+				"id": 134,
+				"song": "Lessons - Falcon Punch Remix"
+			},
+			{
+				"album": "Angles",
+				"artist": "The Strokes",
+				"id": 135,
+				"song": "Under Cover of Darkness"
+			},
+			{
+				"album": "Three Second Memory (Deluxe)",
+				"artist": "GoldFish",
+				"id": 136,
+				"song": "Moonwalk Away"
+			},
+			{
+				"album": "Hibou",
+				"artist": "Hibou",
+				"id": 137,
+				"song": "Dissolve"
+			},
+			{
+				"album": "Shaky Ground",
+				"artist": "Freedom Fry",
+				"id": 138,
+				"song": "Shaky Ground"
+			},
+			{
+				"album": "More Than Just A Dream",
+				"artist": "Fitz and The Tantrums",
+				"id": 139,
+				"song": "6am"
+			},
+			{
+				"album": "Hurry up, We're Dreaming",
+				"artist": "M83",
+				"id": 140,
+				"song": "Midnight City"
+			},
+			{
+				"album": "Tape Machine",
+				"artist": "STRFKR",
+				"id": 141,
+				"song": "Tape Machine"
+			},
+			{
+				"album": "Ryat",
+				"artist": "ATTLAS",
+				"id": 142,
+				"song": "Ryat"
+			},
+			{
+				"album": "Far Away",
+				"artist": "isle&fever",
+				"id": 143,
+				"song": "Far Away"
+			},
+			{
+				"album": "Give Up",
+				"artist": "The Postal Service",
+				"id": 144,
+				"song": "Clark Gable"
+			},
+			{
+				"album": "Starfucker",
+				"artist": "STRFKR",
+				"id": 145,
+				"song": "Rawnald Gregory Erickson the Second"
+			},
+			{
+				"album": "Thr!!!er",
+				"artist": "!!!",
+				"id": 146,
+				"song": "One Girl / One Boy"
+			},
+			{
+				"album": "High Love - EP",
+				"artist": "Dim Sum",
+				"id": 147,
+				"song": "High Love"
+			},
+			{
+				"album": "Oracular Spectacular",
+				"artist": "MGMT",
+				"id": 148,
+				"song": "Time to Pretend"
+			},
+			{
+				"album": "Merriweather Post Pavilion",
+				"artist": "Animal Collective",
+				"id": 149,
+				"song": "My Girls"
+			},
+			{
+				"album": "Stars",
+				"artist": "Future Generations",
+				"id": 150,
+				"song": "Stars"
+			},
+			{
+				"album": "Metaphysical",
+				"artist": "Autograf, Janelle Kroll",
+				"id": 151,
+				"song": "Metaphysical"
+			},
+			{
+				"album": "Pacific Standard Time",
+				"artist": "Poolside",
+				"id": 152,
+				"song": "Slow Down"
+			},
+			{
+				"album": "Ophelia",
+				"artist": "The Lumineers",
+				"id": 153,
+				"song": "Ophelia"
+			},
+			{
+				"album": "Illumination",
+				"artist": "Miami Horror, Alan Palomo",
+				"id": 154,
+				"song": "Holidays (feat  Alan Palomo)"
+			},
+			{
+				"album": "All We Are",
+				"artist": "All We Are",
+				"id": 155,
+				"song": "Feel Safe"
+			},
+			{
+				"album": "Raceday",
+				"artist": "Grace Mitchell",
+				"id": 156,
+				"song": "NoLo"
+			},
+			{
+				"album": "40 Watt",
+				"artist": "ELEL",
+				"id": 157,
+				"song": "40 Watt"
+			},
+			{
+				"album": "Poolside Mexico",
+				"artist": "Long Beach City Kids",
+				"id": 158,
+				"song": "Takin' Over - Original Mix"
+			},
+			{
+				"album": "My Way",
+				"artist": "Calvin Harris",
+				"id": 159,
+				"song": "My Way"
+			},
+			{
+				"album": "Nite Tales",
+				"artist": "Noirre",
+				"id": 160,
+				"song": "309"
+			},
+			{
+				"album": "Future Generations",
+				"artist": "Future Generations",
+				"id": 161,
+				"song": "Find An Answer"
+			},
+			{
+				"album": "Fiona Coyne/Fall Harder",
+				"artist": "Skylar Spence",
+				"id": 162,
+				"song": "Fiona Coyne"
+			},
+			{
+				"album": "Woodland - EP",
+				"artist": "The Paper Kites",
+				"id": 163,
+				"song": "Halcyon"
+			},
+			{
+				"album": "Rebel Era",
+				"artist": "GRiZ, The Floozies",
+				"id": 164,
+				"song": "Simple (feat  the Floozies)"
+			},
+			{
+				"album": "On Oni Pond",
+				"artist": "Man Man",
+				"id": 165,
+				"song": "Head On [Hold On To Your Heart]"
+			},
+			{
+				"album": "Smoke + Mirrors (Deluxe)",
+				"artist": "Imagine Dragons, Broiler",
+				"id": 166,
+				"song": "Shots - Broiler Remix"
+			},
+			{
+				"album": "Symmetry (Lenno Remix)",
+				"artist": "Tropic Of Pisces",
+				"id": 167,
+				"song": "Symmetry (Lenno Remix)"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Speak",
+				"id": 168,
+				"song": "I Should've Guessed"
+			},
+			{
+				"album": "Indian Summer",
+				"artist": "How Sad",
+				"id": 169,
+				"song": "Hot Blur"
+			},
+			{
+				"album": "Pacific Standard Time",
+				"artist": "Poolside",
+				"id": 170,
+				"song": "Harvest Moon"
+			},
+			{
+				"album": "Tell Me I'm Pretty",
+				"artist": "Cage The Elephant",
+				"id": 171,
+				"song": "Trouble"
+			},
+			{
+				"album": "Been There Before (Shook Remix)",
+				"artist": "Ghost Beach",
+				"id": 172,
+				"song": "Been There Before (Shook Remix)"
+			},
+			{
+				"album": "Sunset Lover",
+				"artist": "Petit Biscuit",
+				"id": 173,
+				"song": "Sunset Lover"
+			},
+			{
+				"album": "Hanging Gardens",
+				"artist": "Classixx",
+				"id": 174,
+				"song": "I'll Get You - feat  Jeppe"
+			},
+			{
+				"album": "Waiting For Love",
+				"artist": "Avicii",
+				"id": 175,
+				"song": "Waiting For Love"
+			},
+			{
+				"album": "And The Childhood Heroes",
+				"artist": "Count Counsellor",
+				"id": 176,
+				"song": "Disco Dodo"
+			},
+			{
+				"album": "Life Itself (Roosevelt Remix)",
+				"artist": "Glass Animals",
+				"id": 177,
+				"song": "Life Itself - Roosevelt Remix"
+			},
+			{
+				"album": "Polaroid Memories",
+				"artist": "Urban Cone",
+				"id": 178,
+				"song": "Sadness Disease"
+			},
+			{
+				"album": "Brighter Future",
+				"artist": "Big Gigantic, Naaz",
+				"id": 179,
+				"song": "Brighter Future (feat  Naaz)"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix",
+				"artist": "Phoenix",
+				"id": 180,
+				"song": "1901"
+			},
+			{
+				"album": "Leisure Cruise",
+				"artist": "Leisure Cruise",
+				"id": 181,
+				"song": "Ragged Dawn"
+			},
+			{
+				"album": "California",
+				"artist": "The Lagoons",
+				"id": 182,
+				"song": "California"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Peter MorZn",
+				"id": 183,
+				"song": "All I Got"
+			},
+			{
+				"album": "My Trigger Remixes EP",
+				"artist": "Miike Snow, Indiginis",
+				"id": 184,
+				"song": "My Trigger - Indiginis Remix"
+			},
+			{
+				"album": "In Return",
+				"artist": "ODESZA, Zyra",
+				"id": 185,
+				"song": "Its Only (feat  Zyra)"
+			},
+			{
+				"album": "Hot Fuss",
+				"artist": "The Killers",
+				"id": 186,
+				"song": "Smile Like You Mean It"
+			},
+			{
+				"album": "In the Shadows",
+				"artist": "Foreign Air",
+				"id": 187,
+				"song": "In the Shadows"
+			},
+			{
+				"album": "Ruleta",
+				"artist": "Technicolor Fabrics",
+				"id": 188,
+				"song": "Ruleta"
+			},
+			{
+				"album": "Brighter Future",
+				"artist": "Big Gigantic",
+				"id": 189,
+				"song": "Bring The Funk Back"
+			},
+			{
+				"album": "Being No One, Going Nowhere",
+				"artist": "STRFKR",
+				"id": 190,
+				"song": "Tape Machine"
+			},
+			{
+				"album": "Nite Tales",
+				"artist": "Noirre",
+				"id": 191,
+				"song": "Run"
+			},
+			{
+				"album": "Headlunge",
+				"artist": "CAPYAC",
+				"id": 192,
+				"song": "Speedracer"
+			},
+			{
+				"album": "Fill Your Brains",
+				"artist": "Harrison Brome",
+				"id": 193,
+				"song": "Midnight Island"
+			},
+			{
+				"album": "Hurry Up, We're Dreaming",
+				"artist": "M83",
+				"id": 194,
+				"song": "Steve McQueen"
+			},
+			{
+				"album": "Modern Hearts",
+				"artist": "The Knocks, St  Lucia",
+				"id": 195,
+				"song": "Modern Hearts"
+			},
+			{
+				"album": "GENERATIONWHY",
+				"artist": "ZHU",
+				"id": 196,
+				"song": "Generationwhy"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Alex Ebert",
+				"id": 197,
+				"song": "Tear You Down"
+			},
+			{
+				"album": "Hurry Up, We're Dreaming",
+				"artist": "M83",
+				"id": 198,
+				"song": "Outro"
+			},
+			{
+				"album": "Year of the Caprese",
+				"artist": "Cherub",
+				"id": 199,
+				"song": "Do the Math"
+			},
+			{
+				"album": "Jacuzzi EP",
+				"artist": "Croquet Club",
+				"id": 200,
+				"song": "Jacuzzi - Original Mix"
+			},
+			{
+				"album": "Intoxicated (Radio Edit)",
+				"artist": "Martin Solveig, GTA",
+				"id": 201,
+				"song": "Intoxicated - Radio Edit"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Matthew Koma",
+				"id": 202,
+				"song": "Cheap Sunglasses"
+			},
+			{
+				"album": "Tuxedo Remixes",
+				"artist": "Tuxedo",
+				"id": 203,
+				"song": "The Right Time (Jean Tonique Remix)"
+			},
+			{
+				"album": "Wolves (Remixes)",
+				"artist": "Digitalism, Youngblood Hawke",
+				"id": 204,
+				"song": "Wolves - RAC Remix"
+			},
+			{
+				"album": "Out of Touch",
+				"artist": "Brothertiger",
+				"id": 205,
+				"song": "Beyond the Infinite"
+			},
+			{
+				"album": "Satellite",
+				"artist": "STRFKR",
+				"id": 206,
+				"song": "Satellite"
 			}
 		]
 	};

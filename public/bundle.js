@@ -22074,18 +22074,17 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var _this2 = this;
 	
-	      // axios.get('/api/music')
-	      // 	.then(resp => {
-	      // 		this.setState({
-	      //         music: resp.data.music
-	      //       });
-	      // 	})
-	      // 	.catch(console.error)
+	      _axios2.default.get('/api/music').then(function (resp) {
+	        _this2.setState({
+	          music: resp.data.music
+	        });
+	      }).catch(console.error);
 	      //timers,listeners
-	      this.setState({
-	        music: _testData2.default.music
-	      });
+	      // this.setState({
+	      // 			music: data.music
+	      // 		});
 	    }
 	  }, {
 	    key: 'componentWillUnmount',

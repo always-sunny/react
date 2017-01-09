@@ -1,0 +1,30 @@
+.container-fluid {
+	padding-left: 0px;
+	padding-right: 0px;
+
+}
+
+.Header {
+
+	background-color: #272727;
+	border: 1px solid #ccc;
+
+	.headerTitle {
+		color: #fff;
+		font-family: "Avenir-book";
+		letter-spacing: 4px;
+	    padding: 0px 18px;
+	    margin-left: 22px;
+	    margin-top: 15px;
+	}
+}
+
+
+.Music {
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: 3px 3px 5px #888888;
+
+	
+}

@@ -22019,7 +22019,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22032,13 +22032,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ContactsList = __webpack_require__(/*! ./ContactsList */ 179);
+	var _MusicList = __webpack_require__(/*! ./MusicList */ 179);
 	
-	var _ContactsList2 = _interopRequireDefault(_ContactsList);
+	var _MusicList2 = _interopRequireDefault(_MusicList);
 	
-	var _testData = __webpack_require__(/*! ../testData */ 181);
+	var _axios = __webpack_require__(/*! axios */ 181);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _testData = __webpack_require__(/*! ../testData */ 206);
 	
 	var _testData2 = _interopRequireDefault(_testData);
+	
+	var _Header = __webpack_require__(/*! ./Header */ 207);
+	
+	var _Header2 = _interopRequireDefault(_Header);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22049,56 +22057,75 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+	  _inherits(App, _React$Component);
 	
-		function App(props) {
-			_classCallCheck(this, App);
+	  function App(props) {
+	    _classCallCheck(this, App);
 	
-			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-			_this.state = { contacts: [] };
-			return _this;
-		}
+	    _this.state = {
+	      music: [],
+	      headerTitle: "THE DAILY VIBE"
+	    };
+	    return _this;
+	  }
 	
-		_createClass(App, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				//timers,listeners
-				this.setState({
-					contacts: _testData2.default.contacts
-				});
-			}
-		}, {
-			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-				//clean timers, listeners 
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h1',
-						null,
-						'Contacts List'
-					),
-					_react2.default.createElement(_ContactsList2.default, { contacts: this.state.contacts })
-				);
-			}
-		}]);
+	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
 	
-		return App;
+	      _axios2.default.get('/api/music').then(function (resp) {
+	        _this2.setState({
+	          music: resp.data.music
+	        });
+	      }).catch(console.error);
+	      //timers,listeners
+	      // 	this.setState({
+	      // 				music: data.music
+	      // 			});
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      //clean timers, listeners 
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'App' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'Header' },
+	          _react2.default.createElement(_Header2.default, { headerTitle: this.state.headerTitle })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'Main' },
+	          _react2.default.createElement(_MusicList2.default, { music: this.state.music })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'Footer' },
+	          '...'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return App;
 	}(_react2.default.Component);
 	
 	exports.default = App;
 
 /***/ },
 /* 179 */
-/*!****************************************!*\
-  !*** ./src/components/ContactsList.js ***!
-  \****************************************/
+/*!*************************************!*\
+  !*** ./src/components/MusicList.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22117,9 +22144,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Contact = __webpack_require__(/*! ./Contact */ 180);
+	var _Music = __webpack_require__(/*! ./Music */ 180);
 	
-	var _Contact2 = _interopRequireDefault(_Contact);
+	var _Music2 = _interopRequireDefault(_Music);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22129,88 +22156,88 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ContactsList = function (_React$Component) {
-		_inherits(ContactsList, _React$Component);
+	var MusicList = function (_React$Component) {
+		_inherits(MusicList, _React$Component);
 	
-		function ContactsList(props) {
-			_classCallCheck(this, ContactsList);
+		function MusicList() {
+			_classCallCheck(this, MusicList);
 	
-			var _this = _possibleConstructorReturn(this, (ContactsList.__proto__ || Object.getPrototypeOf(ContactsList)).call(this, props));
-	
-			_this.state = {
-				search: ""
-			};
-			return _this;
+			return _possibleConstructorReturn(this, (MusicList.__proto__ || Object.getPrototypeOf(MusicList)).apply(this, arguments));
 		}
 	
-		_createClass(ContactsList, [{
-			key: 'updateSearch',
-			value: function updateSearch(event) {
-				this.setState({ search: event.target.value.substr(0, 33) });
-			}
-		}, {
-			key: 'addContact',
-			value: function addContact(event) {
-				event.preventDefault();
-				var name = this.refs.name.value;
-				var phone = this.refs.phone.value;
-				var id = Math.floor(Math.random() * 100 + 1);
-				this.setState({
-					contacts: this.state.contacts.concat({ id: id, name: name, phone: phone })
-				});
-				this.refs.name.value = '';
-				this.refs.phone.value = '';
-			}
-		}, {
+		_createClass(MusicList, [{
 			key: 'render',
+	
+			// constructor(props) {
+			// 	super(props);
+	
+			// 	this.state = {
+			// 		search: "",
+	
+			// 	};
+			// }
+	
+	
+			// updateSearch(event) {
+			// 	this.setState({search: event.target.value.substr(0,33)});
+			// }
+	
+			// addContact(event) {
+			// 	event.preventDefault();
+			// 	let name = this.refs.name.value;
+			// 	let phone = this.refs.phone.value;
+			// 	let id = Math.floor((Math.random() * 100) + 1);
+			// 	this.setState({
+			// 		contacts: this.state.contacts.concat({id, name, phone})
+			// 	})
+			// 	this.refs.name.value = '';
+			// 	this.refs.phone.value = '';
+	
+			// }
+	
+	
 			value: function render() {
-				var _this2 = this;
 	
-				var filteredContacts = this.props.contacts.filter(function (contact) {
-					return contact.name.toLowerCase().indexOf(_this2.state.search.toLowerCase()) !== -1;
-				});
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement('input', { type: 'text',
-						placeholder: 'Search',
-						value: this.state.search,
-						onChange: this.updateSearch.bind(this)
-					}),
+				// let filteredMusic = this.props.music.filter(
+				// 		(music) => {
+				// 			return music.song.toLowerCase().indexOf(this.state.props.toLowerCase()) !== -1;
+				// 		}
+				// 	);
+				return (
+	
+					// <input type="text" 
+					// 	placeholder="Search"
+					// 		value={this.state.search}
+					// 		onChange={this.updateSearch.bind(this)}	
+					// 	/>
+	
+					// 	<form onSubmit={this.addContact.bind(this)}>
+					// 		<input type="text" ref="name" />
+					// 		<input type="text" ref="phone" />
+					// 		<button type="submit"> Add New Contact </button>
+					// 	</form>
+	
 					_react2.default.createElement(
-						'form',
-						{ onSubmit: this.addContact.bind(this) },
-						_react2.default.createElement('input', { type: 'text', ref: 'name' }),
-						_react2.default.createElement('input', { type: 'text', ref: 'phone' }),
-						_react2.default.createElement(
-							'button',
-							{ type: 'submit' },
-							' Add New Contact '
-						)
-					),
-					_react2.default.createElement(
-						'ul',
+						'div',
 						null,
-						filteredContacts.map(function (contact) {
-							return _react2.default.createElement(_Contact2.default, { contact: contact,
-	
-								key: contact.id });
+						this.props.music.slice(0, this.props.length).map(function (music) {
+							return _react2.default.createElement(_Music2.default, { music: music, key: music.id });
 						})
 					)
 				);
 			}
 		}]);
 	
-		return ContactsList;
+		return MusicList;
 	}(_react2.default.Component);
 	
-	exports.default = ContactsList;
+	exports.default = MusicList;
 
 /***/ },
 /* 180 */
-/*!***********************************!*\
-  !*** ./src/components/Contact.js ***!
-  \***********************************/
+/*!*********************************!*\
+  !*** ./src/components/Music.js ***!
+  \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22229,50 +22256,2902 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Contact = function Contact(_ref) {
-		var contact = _ref.contact;
+	var Music = function Music(_ref) {
+		var music = _ref.music;
 		return _react2.default.createElement(
-			'li',
-			null,
-			contact.name,
-			' ',
-			contact.phone
+			'div',
+			{ className: 'Music' },
+			_react2.default.createElement(
+				'div',
+				{ className: 'songName' },
+				music.id,
+				' - ',
+				music.song
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'artistName' },
+				music.artist
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'albumName' },
+				music.album
+			)
 		);
 	};
 	
-	exports.default = Contact;
+	exports.default = Music;
 
 /***/ },
 /* 181 */
+/*!**************************!*\
+  !*** ./~/axios/index.js ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(/*! ./lib/axios */ 182);
+
+/***/ },
+/* 182 */
+/*!******************************!*\
+  !*** ./~/axios/lib/axios.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./utils */ 183);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 184);
+	var Axios = __webpack_require__(/*! ./core/Axios */ 185);
+	var defaults = __webpack_require__(/*! ./defaults */ 186);
+	
+	/**
+	 * Create an instance of Axios
+	 *
+	 * @param {Object} defaultConfig The default config for the instance
+	 * @return {Axios} A new instance of Axios
+	 */
+	function createInstance(defaultConfig) {
+	  var context = new Axios(defaultConfig);
+	  var instance = bind(Axios.prototype.request, context);
+	
+	  // Copy axios.prototype to instance
+	  utils.extend(instance, Axios.prototype, context);
+	
+	  // Copy context to instance
+	  utils.extend(instance, context);
+	
+	  return instance;
+	}
+	
+	// Create the default instance to be exported
+	var axios = createInstance(defaults);
+	
+	// Expose Axios class to allow class inheritance
+	axios.Axios = Axios;
+	
+	// Factory for creating new instances
+	axios.create = function create(instanceConfig) {
+	  return createInstance(utils.merge(defaults, instanceConfig));
+	};
+	
+	// Expose Cancel & CancelToken
+	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 203);
+	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 204);
+	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 200);
+	
+	// Expose all/spread
+	axios.all = function all(promises) {
+	  return Promise.all(promises);
+	};
+	axios.spread = __webpack_require__(/*! ./helpers/spread */ 205);
+	
+	module.exports = axios;
+	
+	// Allow use of default import syntax in TypeScript
+	module.exports.default = axios;
+
+
+/***/ },
+/* 183 */
+/*!******************************!*\
+  !*** ./~/axios/lib/utils.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var bind = __webpack_require__(/*! ./helpers/bind */ 184);
+	
+	/*global toString:true*/
+	
+	// utils is a library of generic helper functions non-specific to axios
+	
+	var toString = Object.prototype.toString;
+	
+	/**
+	 * Determine if a value is an Array
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Array, otherwise false
+	 */
+	function isArray(val) {
+	  return toString.call(val) === '[object Array]';
+	}
+	
+	/**
+	 * Determine if a value is an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+	 */
+	function isArrayBuffer(val) {
+	  return toString.call(val) === '[object ArrayBuffer]';
+	}
+	
+	/**
+	 * Determine if a value is a FormData
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an FormData, otherwise false
+	 */
+	function isFormData(val) {
+	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+	}
+	
+	/**
+	 * Determine if a value is a view on an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+	 */
+	function isArrayBufferView(val) {
+	  var result;
+	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+	    result = ArrayBuffer.isView(val);
+	  } else {
+	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Determine if a value is a String
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a String, otherwise false
+	 */
+	function isString(val) {
+	  return typeof val === 'string';
+	}
+	
+	/**
+	 * Determine if a value is a Number
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Number, otherwise false
+	 */
+	function isNumber(val) {
+	  return typeof val === 'number';
+	}
+	
+	/**
+	 * Determine if a value is undefined
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if the value is undefined, otherwise false
+	 */
+	function isUndefined(val) {
+	  return typeof val === 'undefined';
+	}
+	
+	/**
+	 * Determine if a value is an Object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Object, otherwise false
+	 */
+	function isObject(val) {
+	  return val !== null && typeof val === 'object';
+	}
+	
+	/**
+	 * Determine if a value is a Date
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Date, otherwise false
+	 */
+	function isDate(val) {
+	  return toString.call(val) === '[object Date]';
+	}
+	
+	/**
+	 * Determine if a value is a File
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a File, otherwise false
+	 */
+	function isFile(val) {
+	  return toString.call(val) === '[object File]';
+	}
+	
+	/**
+	 * Determine if a value is a Blob
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Blob, otherwise false
+	 */
+	function isBlob(val) {
+	  return toString.call(val) === '[object Blob]';
+	}
+	
+	/**
+	 * Determine if a value is a Function
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Function, otherwise false
+	 */
+	function isFunction(val) {
+	  return toString.call(val) === '[object Function]';
+	}
+	
+	/**
+	 * Determine if a value is a Stream
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Stream, otherwise false
+	 */
+	function isStream(val) {
+	  return isObject(val) && isFunction(val.pipe);
+	}
+	
+	/**
+	 * Determine if a value is a URLSearchParams object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+	 */
+	function isURLSearchParams(val) {
+	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+	}
+	
+	/**
+	 * Trim excess whitespace off the beginning and end of a string
+	 *
+	 * @param {String} str The String to trim
+	 * @returns {String} The String freed of excess whitespace
+	 */
+	function trim(str) {
+	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+	}
+	
+	/**
+	 * Determine if we're running in a standard browser environment
+	 *
+	 * This allows axios to run in a web worker, and react-native.
+	 * Both environments support XMLHttpRequest, but not fully standard globals.
+	 *
+	 * web workers:
+	 *  typeof window -> undefined
+	 *  typeof document -> undefined
+	 *
+	 * react-native:
+	 *  typeof document.createElement -> undefined
+	 */
+	function isStandardBrowserEnv() {
+	  return (
+	    typeof window !== 'undefined' &&
+	    typeof document !== 'undefined' &&
+	    typeof document.createElement === 'function'
+	  );
+	}
+	
+	/**
+	 * Iterate over an Array or an Object invoking a function for each item.
+	 *
+	 * If `obj` is an Array callback will be called passing
+	 * the value, index, and complete array for each item.
+	 *
+	 * If 'obj' is an Object callback will be called passing
+	 * the value, key, and complete object for each property.
+	 *
+	 * @param {Object|Array} obj The object to iterate
+	 * @param {Function} fn The callback to invoke for each item
+	 */
+	function forEach(obj, fn) {
+	  // Don't bother if no value provided
+	  if (obj === null || typeof obj === 'undefined') {
+	    return;
+	  }
+	
+	  // Force an array if not already something iterable
+	  if (typeof obj !== 'object' && !isArray(obj)) {
+	    /*eslint no-param-reassign:0*/
+	    obj = [obj];
+	  }
+	
+	  if (isArray(obj)) {
+	    // Iterate over array values
+	    for (var i = 0, l = obj.length; i < l; i++) {
+	      fn.call(null, obj[i], i, obj);
+	    }
+	  } else {
+	    // Iterate over object keys
+	    for (var key in obj) {
+	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+	        fn.call(null, obj[key], key, obj);
+	      }
+	    }
+	  }
+	}
+	
+	/**
+	 * Accepts varargs expecting each argument to be an object, then
+	 * immutably merges the properties of each object and returns result.
+	 *
+	 * When multiple objects contain the same key the later object in
+	 * the arguments list will take precedence.
+	 *
+	 * Example:
+	 *
+	 * ```js
+	 * var result = merge({foo: 123}, {foo: 456});
+	 * console.log(result.foo); // outputs 456
+	 * ```
+	 *
+	 * @param {Object} obj1 Object to merge
+	 * @returns {Object} Result of all merge properties
+	 */
+	function merge(/* obj1, obj2, obj3, ... */) {
+	  var result = {};
+	  function assignValue(val, key) {
+	    if (typeof result[key] === 'object' && typeof val === 'object') {
+	      result[key] = merge(result[key], val);
+	    } else {
+	      result[key] = val;
+	    }
+	  }
+	
+	  for (var i = 0, l = arguments.length; i < l; i++) {
+	    forEach(arguments[i], assignValue);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Extends object a by mutably adding to it the properties of object b.
+	 *
+	 * @param {Object} a The object to be extended
+	 * @param {Object} b The object to copy properties from
+	 * @param {Object} thisArg The object to bind function to
+	 * @return {Object} The resulting value of object a
+	 */
+	function extend(a, b, thisArg) {
+	  forEach(b, function assignValue(val, key) {
+	    if (thisArg && typeof val === 'function') {
+	      a[key] = bind(val, thisArg);
+	    } else {
+	      a[key] = val;
+	    }
+	  });
+	  return a;
+	}
+	
+	module.exports = {
+	  isArray: isArray,
+	  isArrayBuffer: isArrayBuffer,
+	  isFormData: isFormData,
+	  isArrayBufferView: isArrayBufferView,
+	  isString: isString,
+	  isNumber: isNumber,
+	  isObject: isObject,
+	  isUndefined: isUndefined,
+	  isDate: isDate,
+	  isFile: isFile,
+	  isBlob: isBlob,
+	  isFunction: isFunction,
+	  isStream: isStream,
+	  isURLSearchParams: isURLSearchParams,
+	  isStandardBrowserEnv: isStandardBrowserEnv,
+	  forEach: forEach,
+	  merge: merge,
+	  extend: extend,
+	  trim: trim
+	};
+
+
+/***/ },
+/* 184 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/helpers/bind.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function bind(fn, thisArg) {
+	  return function wrap() {
+	    var args = new Array(arguments.length);
+	    for (var i = 0; i < args.length; i++) {
+	      args[i] = arguments[i];
+	    }
+	    return fn.apply(thisArg, args);
+	  };
+	};
+
+
+/***/ },
+/* 185 */
+/*!***********************************!*\
+  !*** ./~/axios/lib/core/Axios.js ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var defaults = __webpack_require__(/*! ./../defaults */ 186);
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 197);
+	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 198);
+	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 201);
+	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 202);
+	
+	/**
+	 * Create a new instance of Axios
+	 *
+	 * @param {Object} instanceConfig The default config for the instance
+	 */
+	function Axios(instanceConfig) {
+	  this.defaults = instanceConfig;
+	  this.interceptors = {
+	    request: new InterceptorManager(),
+	    response: new InterceptorManager()
+	  };
+	}
+	
+	/**
+	 * Dispatch a request
+	 *
+	 * @param {Object} config The config specific for this request (merged with this.defaults)
+	 */
+	Axios.prototype.request = function request(config) {
+	  /*eslint no-param-reassign:0*/
+	  // Allow for axios('example/url'[, config]) a la fetch API
+	  if (typeof config === 'string') {
+	    config = utils.merge({
+	      url: arguments[0]
+	    }, arguments[1]);
+	  }
+	
+	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+	
+	  // Support baseURL config
+	  if (config.baseURL && !isAbsoluteURL(config.url)) {
+	    config.url = combineURLs(config.baseURL, config.url);
+	  }
+	
+	  // Hook up interceptors middleware
+	  var chain = [dispatchRequest, undefined];
+	  var promise = Promise.resolve(config);
+	
+	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+	    chain.push(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  while (chain.length) {
+	    promise = promise.then(chain.shift(), chain.shift());
+	  }
+	
+	  return promise;
+	};
+	
+	// Provide aliases for supported request methods
+	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url
+	    }));
+	  };
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, data, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url,
+	      data: data
+	    }));
+	  };
+	});
+	
+	module.exports = Axios;
+
+
+/***/ },
+/* 186 */
+/*!*********************************!*\
+  !*** ./~/axios/lib/defaults.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(/*! ./utils */ 183);
+	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 187);
+	
+	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
+	var DEFAULT_CONTENT_TYPE = {
+	  'Content-Type': 'application/x-www-form-urlencoded'
+	};
+	
+	function setContentTypeIfUnset(headers, value) {
+	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+	    headers['Content-Type'] = value;
+	  }
+	}
+	
+	function getDefaultAdapter() {
+	  var adapter;
+	  if (typeof XMLHttpRequest !== 'undefined') {
+	    // For browsers use XHR adapter
+	    adapter = __webpack_require__(/*! ./adapters/xhr */ 188);
+	  } else if (typeof process !== 'undefined') {
+	    // For node use HTTP adapter
+	    adapter = __webpack_require__(/*! ./adapters/http */ 188);
+	  }
+	  return adapter;
+	}
+	
+	var defaults = {
+	  adapter: getDefaultAdapter(),
+	
+	  transformRequest: [function transformRequest(data, headers) {
+	    normalizeHeaderName(headers, 'Content-Type');
+	    if (utils.isFormData(data) ||
+	      utils.isArrayBuffer(data) ||
+	      utils.isStream(data) ||
+	      utils.isFile(data) ||
+	      utils.isBlob(data)
+	    ) {
+	      return data;
+	    }
+	    if (utils.isArrayBufferView(data)) {
+	      return data.buffer;
+	    }
+	    if (utils.isURLSearchParams(data)) {
+	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+	      return data.toString();
+	    }
+	    if (utils.isObject(data)) {
+	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+	      return JSON.stringify(data);
+	    }
+	    return data;
+	  }],
+	
+	  transformResponse: [function transformResponse(data) {
+	    /*eslint no-param-reassign:0*/
+	    if (typeof data === 'string') {
+	      data = data.replace(PROTECTION_PREFIX, '');
+	      try {
+	        data = JSON.parse(data);
+	      } catch (e) { /* Ignore */ }
+	    }
+	    return data;
+	  }],
+	
+	  timeout: 0,
+	
+	  xsrfCookieName: 'XSRF-TOKEN',
+	  xsrfHeaderName: 'X-XSRF-TOKEN',
+	
+	  maxContentLength: -1,
+	
+	  validateStatus: function validateStatus(status) {
+	    return status >= 200 && status < 300;
+	  }
+	};
+	
+	defaults.headers = {
+	  common: {
+	    'Accept': 'application/json, text/plain, */*'
+	  }
+	};
+	
+	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
+	  defaults.headers[method] = {};
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+	});
+	
+	module.exports = defaults;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
+
+/***/ },
+/* 187 */
+/*!****************************************************!*\
+  !*** ./~/axios/lib/helpers/normalizeHeaderName.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ../utils */ 183);
+	
+	module.exports = function normalizeHeaderName(headers, normalizedName) {
+	  utils.forEach(headers, function processHeader(value, name) {
+	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+	      headers[normalizedName] = value;
+	      delete headers[name];
+	    }
+	  });
+	};
+
+
+/***/ },
+/* 188 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/adapters/xhr.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	var settle = __webpack_require__(/*! ./../core/settle */ 189);
+	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 192);
+	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 193);
+	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 194);
+	var createError = __webpack_require__(/*! ../core/createError */ 190);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 195);
+	
+	module.exports = function xhrAdapter(config) {
+	  return new Promise(function dispatchXhrRequest(resolve, reject) {
+	    var requestData = config.data;
+	    var requestHeaders = config.headers;
+	
+	    if (utils.isFormData(requestData)) {
+	      delete requestHeaders['Content-Type']; // Let the browser set it
+	    }
+	
+	    var request = new XMLHttpRequest();
+	    var loadEvent = 'onreadystatechange';
+	    var xDomain = false;
+	
+	    // For IE 8/9 CORS support
+	    // Only supports POST and GET calls and doesn't returns the response headers.
+	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
+	    if (process.env.NODE_ENV !== 'test' &&
+	        typeof window !== 'undefined' &&
+	        window.XDomainRequest && !('withCredentials' in request) &&
+	        !isURLSameOrigin(config.url)) {
+	      request = new window.XDomainRequest();
+	      loadEvent = 'onload';
+	      xDomain = true;
+	      request.onprogress = function handleProgress() {};
+	      request.ontimeout = function handleTimeout() {};
+	    }
+	
+	    // HTTP basic authentication
+	    if (config.auth) {
+	      var username = config.auth.username || '';
+	      var password = config.auth.password || '';
+	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+	    }
+	
+	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+	
+	    // Set the request timeout in MS
+	    request.timeout = config.timeout;
+	
+	    // Listen for ready state
+	    request[loadEvent] = function handleLoad() {
+	      if (!request || (request.readyState !== 4 && !xDomain)) {
+	        return;
+	      }
+	
+	      // The request errored out and we didn't get a response, this will be
+	      // handled by onerror instead
+	      // With one exception: request that using file: protocol, most browsers
+	      // will return status as 0 even though it's a successful request
+	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+	        return;
+	      }
+	
+	      // Prepare the response
+	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+	      var response = {
+	        data: responseData,
+	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
+	        status: request.status === 1223 ? 204 : request.status,
+	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+	        headers: responseHeaders,
+	        config: config,
+	        request: request
+	      };
+	
+	      settle(resolve, reject, response);
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle low level network errors
+	    request.onerror = function handleError() {
+	      // Real errors are hidden from us by the browser
+	      // onerror should only fire if it's a network error
+	      reject(createError('Network Error', config));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle timeout
+	    request.ontimeout = function handleTimeout() {
+	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Add xsrf header
+	    // This is only done if running in a standard browser environment.
+	    // Specifically not if we're in a web worker, or react-native.
+	    if (utils.isStandardBrowserEnv()) {
+	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 196);
+	
+	      // Add xsrf header
+	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+	          cookies.read(config.xsrfCookieName) :
+	          undefined;
+	
+	      if (xsrfValue) {
+	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+	      }
+	    }
+	
+	    // Add headers to the request
+	    if ('setRequestHeader' in request) {
+	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+	          // Remove Content-Type if data is undefined
+	          delete requestHeaders[key];
+	        } else {
+	          // Otherwise add header to the request
+	          request.setRequestHeader(key, val);
+	        }
+	      });
+	    }
+	
+	    // Add withCredentials to request if needed
+	    if (config.withCredentials) {
+	      request.withCredentials = true;
+	    }
+	
+	    // Add responseType to request if needed
+	    if (config.responseType) {
+	      try {
+	        request.responseType = config.responseType;
+	      } catch (e) {
+	        if (request.responseType !== 'json') {
+	          throw e;
+	        }
+	      }
+	    }
+	
+	    // Handle progress if needed
+	    if (typeof config.onDownloadProgress === 'function') {
+	      request.addEventListener('progress', config.onDownloadProgress);
+	    }
+	
+	    // Not all browsers support upload events
+	    if (typeof config.onUploadProgress === 'function' && request.upload) {
+	      request.upload.addEventListener('progress', config.onUploadProgress);
+	    }
+	
+	    if (config.cancelToken) {
+	      // Handle cancellation
+	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!request) {
+	          return;
+	        }
+	
+	        request.abort();
+	        reject(cancel);
+	        // Clean up request
+	        request = null;
+	      });
+	    }
+	
+	    if (requestData === undefined) {
+	      requestData = null;
+	    }
+	
+	    // Send the request
+	    request.send(requestData);
+	  });
+	};
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
+
+/***/ },
+/* 189 */
+/*!************************************!*\
+  !*** ./~/axios/lib/core/settle.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var createError = __webpack_require__(/*! ./createError */ 190);
+	
+	/**
+	 * Resolve or reject a Promise based on response status.
+	 *
+	 * @param {Function} resolve A function that resolves the promise.
+	 * @param {Function} reject A function that rejects the promise.
+	 * @param {object} response The response.
+	 */
+	module.exports = function settle(resolve, reject, response) {
+	  var validateStatus = response.config.validateStatus;
+	  // Note: status is not exposed by XDomainRequest
+	  if (!response.status || !validateStatus || validateStatus(response.status)) {
+	    resolve(response);
+	  } else {
+	    reject(createError(
+	      'Request failed with status code ' + response.status,
+	      response.config,
+	      null,
+	      response
+	    ));
+	  }
+	};
+
+
+/***/ },
+/* 190 */
+/*!*****************************************!*\
+  !*** ./~/axios/lib/core/createError.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var enhanceError = __webpack_require__(/*! ./enhanceError */ 191);
+	
+	/**
+	 * Create an Error with the specified message, config, error code, and response.
+	 *
+	 * @param {string} message The error message.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The created error.
+	 */
+	module.exports = function createError(message, config, code, response) {
+	  var error = new Error(message);
+	  return enhanceError(error, config, code, response);
+	};
+
+
+/***/ },
+/* 191 */
+/*!******************************************!*\
+  !*** ./~/axios/lib/core/enhanceError.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Update an Error with the specified config, error code, and response.
+	 *
+	 * @param {Error} error The error to update.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The error.
+	 */
+	module.exports = function enhanceError(error, config, code, response) {
+	  error.config = config;
+	  if (code) {
+	    error.code = code;
+	  }
+	  error.response = response;
+	  return error;
+	};
+
+
+/***/ },
+/* 192 */
+/*!*****************************************!*\
+  !*** ./~/axios/lib/helpers/buildURL.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	function encode(val) {
+	  return encodeURIComponent(val).
+	    replace(/%40/gi, '@').
+	    replace(/%3A/gi, ':').
+	    replace(/%24/g, '$').
+	    replace(/%2C/gi, ',').
+	    replace(/%20/g, '+').
+	    replace(/%5B/gi, '[').
+	    replace(/%5D/gi, ']');
+	}
+	
+	/**
+	 * Build a URL by appending params to the end
+	 *
+	 * @param {string} url The base of the url (e.g., http://www.google.com)
+	 * @param {object} [params] The params to be appended
+	 * @returns {string} The formatted url
+	 */
+	module.exports = function buildURL(url, params, paramsSerializer) {
+	  /*eslint no-param-reassign:0*/
+	  if (!params) {
+	    return url;
+	  }
+	
+	  var serializedParams;
+	  if (paramsSerializer) {
+	    serializedParams = paramsSerializer(params);
+	  } else if (utils.isURLSearchParams(params)) {
+	    serializedParams = params.toString();
+	  } else {
+	    var parts = [];
+	
+	    utils.forEach(params, function serialize(val, key) {
+	      if (val === null || typeof val === 'undefined') {
+	        return;
+	      }
+	
+	      if (utils.isArray(val)) {
+	        key = key + '[]';
+	      }
+	
+	      if (!utils.isArray(val)) {
+	        val = [val];
+	      }
+	
+	      utils.forEach(val, function parseValue(v) {
+	        if (utils.isDate(v)) {
+	          v = v.toISOString();
+	        } else if (utils.isObject(v)) {
+	          v = JSON.stringify(v);
+	        }
+	        parts.push(encode(key) + '=' + encode(v));
+	      });
+	    });
+	
+	    serializedParams = parts.join('&');
+	  }
+	
+	  if (serializedParams) {
+	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+	  }
+	
+	  return url;
+	};
+
+
+/***/ },
+/* 193 */
+/*!*********************************************!*\
+  !*** ./~/axios/lib/helpers/parseHeaders.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	/**
+	 * Parse headers into an object
+	 *
+	 * ```
+	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
+	 * Content-Type: application/json
+	 * Connection: keep-alive
+	 * Transfer-Encoding: chunked
+	 * ```
+	 *
+	 * @param {String} headers Headers needing to be parsed
+	 * @returns {Object} Headers parsed into an object
+	 */
+	module.exports = function parseHeaders(headers) {
+	  var parsed = {};
+	  var key;
+	  var val;
+	  var i;
+	
+	  if (!headers) { return parsed; }
+	
+	  utils.forEach(headers.split('\n'), function parser(line) {
+	    i = line.indexOf(':');
+	    key = utils.trim(line.substr(0, i)).toLowerCase();
+	    val = utils.trim(line.substr(i + 1));
+	
+	    if (key) {
+	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+	    }
+	  });
+	
+	  return parsed;
+	};
+
+
+/***/ },
+/* 194 */
+/*!************************************************!*\
+  !*** ./~/axios/lib/helpers/isURLSameOrigin.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs have full support of the APIs needed to test
+	  // whether the request URL is of the same origin as current location.
+	  (function standardBrowserEnv() {
+	    var msie = /(msie|trident)/i.test(navigator.userAgent);
+	    var urlParsingNode = document.createElement('a');
+	    var originURL;
+	
+	    /**
+	    * Parse a URL to discover it's components
+	    *
+	    * @param {String} url The URL to be parsed
+	    * @returns {Object}
+	    */
+	    function resolveURL(url) {
+	      var href = url;
+	
+	      if (msie) {
+	        // IE needs attribute set twice to normalize properties
+	        urlParsingNode.setAttribute('href', href);
+	        href = urlParsingNode.href;
+	      }
+	
+	      urlParsingNode.setAttribute('href', href);
+	
+	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+	      return {
+	        href: urlParsingNode.href,
+	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+	        host: urlParsingNode.host,
+	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+	        hostname: urlParsingNode.hostname,
+	        port: urlParsingNode.port,
+	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+	                  urlParsingNode.pathname :
+	                  '/' + urlParsingNode.pathname
+	      };
+	    }
+	
+	    originURL = resolveURL(window.location.href);
+	
+	    /**
+	    * Determine if a URL shares the same origin as the current location
+	    *
+	    * @param {String} requestURL The URL to test
+	    * @returns {boolean} True if URL shares the same origin, otherwise false
+	    */
+	    return function isURLSameOrigin(requestURL) {
+	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+	      return (parsed.protocol === originURL.protocol &&
+	            parsed.host === originURL.host);
+	    };
+	  })() :
+	
+	  // Non standard browser envs (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return function isURLSameOrigin() {
+	      return true;
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 195 */
+/*!*************************************!*\
+  !*** ./~/axios/lib/helpers/btoa.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+	
+	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	
+	function E() {
+	  this.message = 'String contains an invalid character';
+	}
+	E.prototype = new Error;
+	E.prototype.code = 5;
+	E.prototype.name = 'InvalidCharacterError';
+	
+	function btoa(input) {
+	  var str = String(input);
+	  var output = '';
+	  for (
+	    // initialize result and counter
+	    var block, charCode, idx = 0, map = chars;
+	    // if the next str index does not exist:
+	    //   change the mapping table to "="
+	    //   check if d has no fractional digits
+	    str.charAt(idx | 0) || (map = '=', idx % 1);
+	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+	  ) {
+	    charCode = str.charCodeAt(idx += 3 / 4);
+	    if (charCode > 0xFF) {
+	      throw new E();
+	    }
+	    block = block << 8 | charCode;
+	  }
+	  return output;
+	}
+	
+	module.exports = btoa;
+
+
+/***/ },
+/* 196 */
+/*!****************************************!*\
+  !*** ./~/axios/lib/helpers/cookies.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs support document.cookie
+	  (function standardBrowserEnv() {
+	    return {
+	      write: function write(name, value, expires, path, domain, secure) {
+	        var cookie = [];
+	        cookie.push(name + '=' + encodeURIComponent(value));
+	
+	        if (utils.isNumber(expires)) {
+	          cookie.push('expires=' + new Date(expires).toGMTString());
+	        }
+	
+	        if (utils.isString(path)) {
+	          cookie.push('path=' + path);
+	        }
+	
+	        if (utils.isString(domain)) {
+	          cookie.push('domain=' + domain);
+	        }
+	
+	        if (secure === true) {
+	          cookie.push('secure');
+	        }
+	
+	        document.cookie = cookie.join('; ');
+	      },
+	
+	      read: function read(name) {
+	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+	        return (match ? decodeURIComponent(match[3]) : null);
+	      },
+	
+	      remove: function remove(name) {
+	        this.write(name, '', Date.now() - 86400000);
+	      }
+	    };
+	  })() :
+	
+	  // Non standard browser env (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return {
+	      write: function write() {},
+	      read: function read() { return null; },
+	      remove: function remove() {}
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 197 */
+/*!************************************************!*\
+  !*** ./~/axios/lib/core/InterceptorManager.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	function InterceptorManager() {
+	  this.handlers = [];
+	}
+	
+	/**
+	 * Add a new interceptor to the stack
+	 *
+	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
+	 * @param {Function} rejected The function to handle `reject` for a `Promise`
+	 *
+	 * @return {Number} An ID used to remove interceptor later
+	 */
+	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+	  this.handlers.push({
+	    fulfilled: fulfilled,
+	    rejected: rejected
+	  });
+	  return this.handlers.length - 1;
+	};
+	
+	/**
+	 * Remove an interceptor from the stack
+	 *
+	 * @param {Number} id The ID that was returned by `use`
+	 */
+	InterceptorManager.prototype.eject = function eject(id) {
+	  if (this.handlers[id]) {
+	    this.handlers[id] = null;
+	  }
+	};
+	
+	/**
+	 * Iterate over all the registered interceptors
+	 *
+	 * This method is particularly useful for skipping over any
+	 * interceptors that may have become `null` calling `eject`.
+	 *
+	 * @param {Function} fn The function to call for each interceptor
+	 */
+	InterceptorManager.prototype.forEach = function forEach(fn) {
+	  utils.forEach(this.handlers, function forEachHandler(h) {
+	    if (h !== null) {
+	      fn(h);
+	    }
+	  });
+	};
+	
+	module.exports = InterceptorManager;
+
+
+/***/ },
+/* 198 */
+/*!*********************************************!*\
+  !*** ./~/axios/lib/core/dispatchRequest.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	var transformData = __webpack_require__(/*! ./transformData */ 199);
+	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 200);
+	var defaults = __webpack_require__(/*! ../defaults */ 186);
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	function throwIfCancellationRequested(config) {
+	  if (config.cancelToken) {
+	    config.cancelToken.throwIfRequested();
+	  }
+	}
+	
+	/**
+	 * Dispatch a request to the server using the configured adapter.
+	 *
+	 * @param {object} config The config that is to be used for the request
+	 * @returns {Promise} The Promise to be fulfilled
+	 */
+	module.exports = function dispatchRequest(config) {
+	  throwIfCancellationRequested(config);
+	
+	  // Ensure headers exist
+	  config.headers = config.headers || {};
+	
+	  // Transform request data
+	  config.data = transformData(
+	    config.data,
+	    config.headers,
+	    config.transformRequest
+	  );
+	
+	  // Flatten headers
+	  config.headers = utils.merge(
+	    config.headers.common || {},
+	    config.headers[config.method] || {},
+	    config.headers || {}
+	  );
+	
+	  utils.forEach(
+	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+	    function cleanHeaderConfig(method) {
+	      delete config.headers[method];
+	    }
+	  );
+	
+	  var adapter = config.adapter || defaults.adapter;
+	
+	  return adapter(config).then(function onAdapterResolution(response) {
+	    throwIfCancellationRequested(config);
+	
+	    // Transform response data
+	    response.data = transformData(
+	      response.data,
+	      response.headers,
+	      config.transformResponse
+	    );
+	
+	    return response;
+	  }, function onAdapterRejection(reason) {
+	    if (!isCancel(reason)) {
+	      throwIfCancellationRequested(config);
+	
+	      // Transform response data
+	      if (reason && reason.response) {
+	        reason.response.data = transformData(
+	          reason.response.data,
+	          reason.response.headers,
+	          config.transformResponse
+	        );
+	      }
+	    }
+	
+	    return Promise.reject(reason);
+	  });
+	};
+
+
+/***/ },
+/* 199 */
+/*!*******************************************!*\
+  !*** ./~/axios/lib/core/transformData.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(/*! ./../utils */ 183);
+	
+	/**
+	 * Transform the data for a request or a response
+	 *
+	 * @param {Object|String} data The data to be transformed
+	 * @param {Array} headers The headers for the request or response
+	 * @param {Array|Function} fns A single function or Array of functions
+	 * @returns {*} The resulting transformed data
+	 */
+	module.exports = function transformData(data, headers, fns) {
+	  /*eslint no-param-reassign:0*/
+	  utils.forEach(fns, function transform(fn) {
+	    data = fn(data, headers);
+	  });
+	
+	  return data;
+	};
+
+
+/***/ },
+/* 200 */
+/*!****************************************!*\
+  !*** ./~/axios/lib/cancel/isCancel.js ***!
+  \****************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function isCancel(value) {
+	  return !!(value && value.__CANCEL__);
+	};
+
+
+/***/ },
+/* 201 */
+/*!**********************************************!*\
+  !*** ./~/axios/lib/helpers/isAbsoluteURL.js ***!
+  \**********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Determines whether the specified URL is absolute
+	 *
+	 * @param {string} url The URL to test
+	 * @returns {boolean} True if the specified URL is absolute, otherwise false
+	 */
+	module.exports = function isAbsoluteURL(url) {
+	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+	  // by any combination of letters, digits, plus, period, or hyphen.
+	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+	};
+
+
+/***/ },
+/* 202 */
+/*!********************************************!*\
+  !*** ./~/axios/lib/helpers/combineURLs.js ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Creates a new URL by combining the specified URLs
+	 *
+	 * @param {string} baseURL The base URL
+	 * @param {string} relativeURL The relative URL
+	 * @returns {string} The combined URL
+	 */
+	module.exports = function combineURLs(baseURL, relativeURL) {
+	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
+	};
+
+
+/***/ },
+/* 203 */
+/*!**************************************!*\
+  !*** ./~/axios/lib/cancel/Cancel.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * A `Cancel` is an object that is thrown when an operation is canceled.
+	 *
+	 * @class
+	 * @param {string=} message The message.
+	 */
+	function Cancel(message) {
+	  this.message = message;
+	}
+	
+	Cancel.prototype.toString = function toString() {
+	  return 'Cancel' + (this.message ? ': ' + this.message : '');
+	};
+	
+	Cancel.prototype.__CANCEL__ = true;
+	
+	module.exports = Cancel;
+
+
+/***/ },
+/* 204 */
+/*!*******************************************!*\
+  !*** ./~/axios/lib/cancel/CancelToken.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Cancel = __webpack_require__(/*! ./Cancel */ 203);
+	
+	/**
+	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
+	 *
+	 * @class
+	 * @param {Function} executor The executor function.
+	 */
+	function CancelToken(executor) {
+	  if (typeof executor !== 'function') {
+	    throw new TypeError('executor must be a function.');
+	  }
+	
+	  var resolvePromise;
+	  this.promise = new Promise(function promiseExecutor(resolve) {
+	    resolvePromise = resolve;
+	  });
+	
+	  var token = this;
+	  executor(function cancel(message) {
+	    if (token.reason) {
+	      // Cancellation has already been requested
+	      return;
+	    }
+	
+	    token.reason = new Cancel(message);
+	    resolvePromise(token.reason);
+	  });
+	}
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+	  if (this.reason) {
+	    throw this.reason;
+	  }
+	};
+	
+	/**
+	 * Returns an object that contains a new `CancelToken` and a function that, when called,
+	 * cancels the `CancelToken`.
+	 */
+	CancelToken.source = function source() {
+	  var cancel;
+	  var token = new CancelToken(function executor(c) {
+	    cancel = c;
+	  });
+	  return {
+	    token: token,
+	    cancel: cancel
+	  };
+	};
+	
+	module.exports = CancelToken;
+
+
+/***/ },
+/* 205 */
+/*!***************************************!*\
+  !*** ./~/axios/lib/helpers/spread.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Syntactic sugar for invoking a function and expanding an array for arguments.
+	 *
+	 * Common use case would be to use `Function.prototype.apply`.
+	 *
+	 *  ```js
+	 *  function f(x, y, z) {}
+	 *  var args = [1, 2, 3];
+	 *  f.apply(null, args);
+	 *  ```
+	 *
+	 * With `spread` this example can be re-written.
+	 *
+	 *  ```js
+	 *  spread(function(x, y, z) {})([1, 2, 3]);
+	 *  ```
+	 *
+	 * @param {Function} callback
+	 * @returns {Function}
+	 */
+	module.exports = function spread(callback) {
+	  return function wrap(arr) {
+	    return callback.apply(null, arr);
+	  };
+	};
+
+
+/***/ },
+/* 206 */
 /*!***************************!*\
   !*** ./src/testData.json ***!
   \***************************/
 /***/ function(module, exports) {
 
 	module.exports = {
-		"contacts": [
+		"music": [
 			{
+				"album": "MoM And DaD",
+				"artist": "Cherub",
 				"id": 1,
-				"name": "Ryan",
-				"phone": "916 206 4207"
+				"song": "Doses And Mimosas"
 			},
 			{
+				"album": "MoM And DaD",
+				"artist": "Cherub",
 				"id": 2,
-				"name": "Dane",
-				"phone": "916 716 5031"
+				"song": "XOXO"
 			},
 			{
+				"album": "1996",
+				"artist": "The Wombats",
 				"id": 3,
-				"name": "Colin",
-				"phone": "916 742 0423"
+				"song": "1996"
 			},
 			{
+				"album": "Get busy living",
+				"artist": "GoldFish",
 				"id": 4,
-				"name": "Tommy",
-				"phone": "916 741 9086"
+				"song": "Get busy living (feat  Emily Bruce)"
+			},
+			{
+				"album": "Goldfish Perceptions of Pacha",
+				"artist": "GoldFish",
+				"id": 5,
+				"song": "Hold Tight"
+			},
+			{
+				"album": "Beaches",
+				"artist": "HWYS",
+				"id": 6,
+				"song": "Stranger"
+			},
+			{
+				"album": "Backroad (feat  Nevve)",
+				"artist": "VOKES, Nevve",
+				"id": 7,
+				"song": "Backroad (feat  Nevve)"
+			},
+			{
+				"album": "Dive In",
+				"artist": "Make Love",
+				"id": 8,
+				"song": "Dive In"
+			},
+			{
+				"album": "Lost In New York",
+				"artist": "Penguin Prison",
+				"id": 9,
+				"song": "Don't Tell Me How It Ends"
+			},
+			{
+				"album": "Run (Remixes)",
+				"artist": "AWOLNATION",
+				"id": 10,
+				"song": "I Am (Steve Aoki Remix)"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 11,
+				"song": "Paradise Awaits"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 12,
+				"song": "Superfriends"
+			},
+			{
+				"album": "THE NIGHTDAY - EP",
+				"artist": "ZHU",
+				"id": 13,
+				"song": "Cocaine Model"
+			},
+			{
+				"album": "Take The Heat Off Me",
+				"artist": "Boney M ",
+				"id": 14,
+				"song": "Daddy Cool"
+			},
+			{
+				"album": "Porcelain / Wolf",
+				"artist": "Skott",
+				"id": 15,
+				"song": "Porcelain"
+			},
+			{
+				"album": "Indian Summer",
+				"artist": "HOAX",
+				"id": 16,
+				"song": "Indian Summer"
+			},
+			{
+				"album": "Only (Kaskade x Lipless Remix)",
+				"artist": "RY X, Kaskade, Lipless",
+				"id": 17,
+				"song": "Only - Kaskade x Lipless Remix"
+			},
+			{
+				"album": "Beat Tape 2",
+				"artist": "Tom Misch, Zak Abel",
+				"id": 18,
+				"song": "Beautiful Escape"
+			},
+			{
+				"album": "All Possible Futures",
+				"artist": "Miami Horror, Future Unlimited",
+				"id": 19,
+				"song": "Stranger"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 20,
+				"song": "Surfs Up"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 21,
+				"song": "Never Come Down"
+			},
+			{
+				"album": "Peer Pressure",
+				"artist": "Jupiter Project",
+				"id": 22,
+				"song": "Peer Pressure"
+			},
+			{
+				"album": "Doubts",
+				"artist": "Pablo Neptuno, mangeymane",
+				"id": 23,
+				"song": "Doubts"
+			},
+			{
+				"album": "Caught Alone",
+				"artist": "Color Card",
+				"id": 24,
+				"song": "Caught Alone"
+			},
+			{
+				"album": "Life of the Party EP",
+				"artist": "Ghostland Observatory",
+				"id": 25,
+				"song": "Life of the Party"
+			},
+			{
+				"album": "Ditch",
+				"artist": "Gus Dapperton",
+				"id": 26,
+				"song": "Ditch"
+			},
+			{
+				"album": "Broken Record (Louis the Child Remix) [feat  Joni Fatora]",
+				"artist": "Soysauce, Joni Fatora",
+				"id": 27,
+				"song": "Broken Record (Louis the Child Remix) [feat  Joni Fatora]"
+			},
+			{
+				"album": "Rogue Waves",
+				"artist": "Miguel",
+				"id": 28,
+				"song": "waves - Tame Impala Remix"
+			},
+			{
+				"album": "OffOffOff",
+				"artist": "autolaser",
+				"id": 29,
+				"song": "OffOffOff"
+			},
+			{
+				"album": "On Belay Belay On",
+				"artist": "Wilderness Survival",
+				"id": 30,
+				"song": "I'm the One"
+			},
+			{
+				"album": "Seeds in Sand",
+				"artist": "Elder Island",
+				"id": 31,
+				"song": "Black Fur"
+			},
+			{
+				"album": "Venice",
+				"artist": "Anderson  Paak",
+				"id": 32,
+				"song": "Off The Ground"
+			},
+			{
+				"album": "Follow",
+				"artist": "Memorecks, Jenna Pemkowski",
+				"id": 33,
+				"song": "Bruce Wayne"
+			},
+			{
+				"album": "Centerfold",
+				"artist": "MOTHXR",
+				"id": 34,
+				"song": "Stranger"
+			},
+			{
+				"album": "Untouchable Skin",
+				"artist": "Grenda",
+				"id": 35,
+				"song": "Let Me Know"
+			},
+			{
+				"album": "If I Was Your Boy",
+				"artist": "Glassio",
+				"id": 36,
+				"song": "If I Was Your Boy"
+			},
+			{
+				"album": "Ocelot",
+				"artist": "Caleb Groh",
+				"id": 37,
+				"song": "Vocelot"
+			},
+			{
+				"album": "Lude Jaw",
+				"artist": "RINSE",
+				"id": 38,
+				"song": "Lude Jaw"
+			},
+			{
+				"album": "Living for the Dream",
+				"artist": "Dylan Kelly",
+				"id": 39,
+				"song": "I Think I Like You"
+			},
+			{
+				"album": "1998",
+				"artist": "Chet Faker, Banks",
+				"id": 40,
+				"song": "1998"
+			},
+			{
+				"album": "Where the Light Shines Most",
+				"artist": "Avindale",
+				"id": 41,
+				"song": "Where the Light Shines Most"
+			},
+			{
+				"album": "Midnight Render (Nausea Rebuild)",
+				"artist": "Craft Spells, Aimai",
+				"id": 42,
+				"song": "Changing Faces - aimai Remix"
+			},
+			{
+				"album": "Brave Shores",
+				"artist": "Brave Shores",
+				"id": 43,
+				"song": "More Like You"
+			},
+			{
+				"album": "Chapter One",
+				"artist": "Joe Hertz, Amber-Simone",
+				"id": 44,
+				"song": "Stay Lost"
+			},
+			{
+				"album": "Intoxication",
+				"artist": "Max Frost",
+				"id": 45,
+				"song": "Paranoia"
+			},
+			{
+				"album": "GENERATIONWHY",
+				"artist": "ZHU",
+				"id": 46,
+				"song": "Hometown Girl"
+			},
+			{
+				"album": "Penguin Prison",
+				"artist": "Penguin Prison",
+				"id": 47,
+				"song": "Dont Fuck With My Money"
+			},
+			{
+				"album": "Lost In New York",
+				"artist": "Penguin Prison",
+				"id": 48,
+				"song": "Calling Out"
+			},
+			{
+				"album": "One Too Far (Shy Girls Remix)",
+				"artist": "Jack and Eliza",
+				"id": 49,
+				"song": "One Too Far - Shy Girls Remix"
+			},
+			{
+				"album": "Stop for Nothing - Single",
+				"artist": "courtship ",
+				"id": 50,
+				"song": "Stop for Nothing"
+			},
+			{
+				"album": "When I'm Down",
+				"artist": "Whethan, Oliver Tree",
+				"id": 51,
+				"song": "When I'm Down"
+			},
+			{
+				"album": "Escape",
+				"artist": "Zoology",
+				"id": 52,
+				"song": "Escape"
+			},
+			{
+				"album": "Aurora Borealis (Luca Lush Remix)",
+				"artist": "The Griswolds",
+				"id": 53,
+				"song": "Aurora Borealis (Luca Lush Remix)"
+			},
+			{
+				"album": "Lightweight",
+				"artist": "Obliques",
+				"id": 54,
+				"song": "Lightweight"
+			},
+			{
+				"album": "Vibe",
+				"artist": "Melvv",
+				"id": 55,
+				"song": "Vibe"
+			},
+			{
+				"album": "Intoxication",
+				"artist": "Max Frost",
+				"id": 56,
+				"song": "Withdrawal"
+			},
+			{
+				"album": "Sunlit Youth",
+				"artist": "Local Natives",
+				"id": 57,
+				"song": "Past Lives"
+			},
+			{
+				"album": "Life Of Leisure",
+				"artist": "Washed Out",
+				"id": 58,
+				"song": "Feel It All Around"
+			},
+			{
+				"album": "Temporary Love",
+				"artist": "The Brinks",
+				"id": 59,
+				"song": "Temporary Love"
+			},
+			{
+				"album": "Dissolve",
+				"artist": "Absofacto",
+				"id": 60,
+				"song": "Dissolve"
+			},
+			{
+				"album": "Bruk Bruk (I Need Your Lovin)",
+				"artist": "Dillon Francis",
+				"id": 61,
+				"song": "Bruk Bruk (I Need Your Lovin)"
+			},
+			{
+				"album": "Need In Me",
+				"artist": "Flashmob",
+				"id": 62,
+				"song": "Need In Me"
+			},
+			{
+				"album": "Embracing Me (Remixes)",
+				"artist": "SAFIA",
+				"id": 63,
+				"song": "Embracing Me - Mazde Remix"
+			},
+			{
+				"album": "Metroplane",
+				"artist": "Metroplane",
+				"id": 64,
+				"song": "Over Me"
+			},
+			{
+				"album": "Disco",
+				"artist": "Strange Club",
+				"id": 65,
+				"song": "Disco"
+			},
+			{
+				"album": "Dear To Me",
+				"artist": "Electric Guest",
+				"id": 66,
+				"song": "Dear To Me"
+			},
+			{
+				"album": "Take It Back",
+				"artist": "NotNo",
+				"id": 67,
+				"song": "Take It Back"
+			},
+			{
+				"album": "Shine",
+				"artist": "Wildhart",
+				"id": 68,
+				"song": "Is It Possible"
+			},
+			{
+				"album": "Arrow (Kauf Remix)",
+				"artist": "Grapell, Kauf",
+				"id": 69,
+				"song": "Arrow - Kauf Remix"
+			},
+			{
+				"album": "Strange Attractor - EP",
+				"artist": "Violet Sands",
+				"id": 70,
+				"song": "Airy Canary"
+			},
+			{
+				"album": "Bad Manion's June Gloom",
+				"artist": "Bad Manion",
+				"id": 71,
+				"song": "The Internet Is for Losers"
+			},
+			{
+				"album": "Hymnals (RAC Mix)",
+				"artist": "Grizfolk",
+				"id": 72,
+				"song": "Hymnals - RAC Mix"
+			},
+			{
+				"album": "Tragic on the Dancefloor (Louis La Roche Remix)",
+				"artist": "Girl Friend, Louis La Roche",
+				"id": 73,
+				"song": "Tragic on the Dancefloor (Louis La Roche Remix)"
+			},
+			{
+				"album": "Poolside",
+				"artist": "Moons of Mars",
+				"id": 74,
+				"song": "Poolside"
+			},
+			{
+				"album": "Broken Bells",
+				"artist": "Broken Bells",
+				"id": 75,
+				"song": "The High Road"
+			},
+			{
+				"album": "Future Disco, Vol  5 - Downtown Express",
+				"artist": "Penguin Prison",
+				"id": 76,
+				"song": "Multi Millionaire - Prince Language Instrumental Remix"
+			},
+			{
+				"album": "Figure - EP",
+				"artist": "Anoraak",
+				"id": 77,
+				"song": "Heart Out"
+			},
+			{
+				"album": "Wildfire",
+				"artist": "Scavenger Hunt",
+				"id": 78,
+				"song": "Wildfire (Bee's Knees Remix)"
+			},
+			{
+				"album": "All the Best",
+				"artist": "Nikitch, Kuna Maze",
+				"id": 79,
+				"song": "Chemelin"
+			},
+			{
+				"album": "Only Temporary (Solidisco Remix)",
+				"artist": "Bronze Radio Return, Solidisco",
+				"id": 80,
+				"song": "Only Temporary (Solidisco Remix)"
+			},
+			{
+				"album": "Till You Let Go",
+				"artist": "Max Future",
+				"id": 81,
+				"song": "Till You Let Go"
+			},
+			{
+				"album": "Hey Maria - EP",
+				"artist": "Klangkarussell",
+				"id": 82,
+				"song": "Hey Maria"
+			},
+			{
+				"album": "Someone To Talk About",
+				"artist": "Phantoms, Grace Mitchell",
+				"id": 83,
+				"song": "Someone To Talk About"
+			},
+			{
+				"album": "Push - Single",
+				"artist": "Derek Pope",
+				"id": 84,
+				"song": "Push"
+			},
+			{
+				"album": "Big Black Delta",
+				"artist": "Big Black Delta",
+				"id": 85,
+				"song": "Money Rain Down"
+			},
+			{
+				"album": "Touch",
+				"artist": "Shift K3Y, Oxford",
+				"id": 86,
+				"song": "Touch - Oxford Remix"
+			},
+			{
+				"album": "River (BURNS Remix)",
+				"artist": "Bishop Briggs",
+				"id": 87,
+				"song": "River - BURNS Remix"
+			},
+			{
+				"album": "Miracle Mile",
+				"artist": "STRFKR",
+				"id": 88,
+				"song": "While I'm Alive"
+			},
+			{
+				"album": "Not Too Fast - Single",
+				"artist": "Plage 84",
+				"id": 89,
+				"song": "Not Too Fast"
+			},
+			{
+				"album": "Passive Me, Aggressive You",
+				"artist": "The Naked And Famous",
+				"id": 90,
+				"song": "Young Blood"
+			},
+			{
+				"album": "Ipanema Beach House Remixes",
+				"artist": "Tobtok, Cesare",
+				"id": 91,
+				"song": "Savanna - Cesare Remix"
+			},
+			{
+				"album": "Osama Obama",
+				"artist": "Larytta",
+				"id": 92,
+				"song": "Osama Obama"
+			},
+			{
+				"album": "Never Ever",
+				"artist": "STRFKR",
+				"id": 93,
+				"song": "Never Ever"
+			},
+			{
+				"album": "Spectrums",
+				"artist": "Au Revoir Simone",
+				"id": 94,
+				"song": "Somebody Who (Nzca Remix)"
+			},
+			{
+				"album": "Melophobia",
+				"artist": "Cage The Elephant",
+				"id": 95,
+				"song": "Cigarette Daydreams"
+			},
+			{
+				"album": "iii",
+				"artist": "Miike Snow",
+				"id": 96,
+				"song": "Genghis Khan"
+			},
+			{
+				"album": "Future Protocol",
+				"artist": "Argonaut And Wasp",
+				"id": 97,
+				"song": "Higher Ground"
+			},
+			{
+				"album": "What Went Down",
+				"artist": "Foals",
+				"id": 98,
+				"song": "Mountain At My Gates"
+			},
+			{
+				"album": "The Wilder Mile",
+				"artist": "Freedom Fry",
+				"id": 99,
+				"song": "The Wilder Mile"
+			},
+			{
+				"album": "Dream",
+				"artist": "Autograf",
+				"id": 100,
+				"song": "Dream"
+			},
+			{
+				"album": "Starfucker",
+				"artist": "STRFKR",
+				"id": 101,
+				"song": "Isabella of Castile"
+			},
+			{
+				"album": "Jupiter (2012)",
+				"artist": "STRFKR",
+				"id": 102,
+				"song": "Girls Just Want to Have Fun"
+			},
+			{
+				"album": "Hanging Gardens",
+				"artist": "Classixx",
+				"id": 103,
+				"song": "A Fax From The Beach"
+			},
+			{
+				"album": "Pitch Black (Piecey Remix)",
+				"artist": "Mazde, LissA, Piecey",
+				"id": 104,
+				"song": "Pitch Black - Piecey Remix"
+			},
+			{
+				"album": "1749",
+				"artist": "Lemaitre",
+				"id": 105,
+				"song": "Day Two"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix (Remix Collection)",
+				"artist": "Phoenix",
+				"id": 106,
+				"song": "Fences - 25 Hrs a Day Remix"
+			},
+			{
+				"album": "It's Never Been Like That (Deluxe Version)",
+				"artist": "Phoenix",
+				"id": 107,
+				"song": "Long Distance Call"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix",
+				"artist": "Phoenix",
+				"id": 108,
+				"song": "Lisztomania"
+			},
+			{
+				"album": "West Of The West",
+				"artist": "Goldroom",
+				"id": 109,
+				"song": "Silhouette"
+			},
+			{
+				"album": "Falling (Whethan Redo) [feat  Whethan]",
+				"artist": "Opia, Whethan",
+				"id": 110,
+				"song": "Falling (Whethan Redo) [feat  Whethan]"
+			},
+			{
+				"album": "Open Your Eyes",
+				"artist": "STRFKR",
+				"id": 111,
+				"song": "Open Your Eyes"
+			},
+			{
+				"album": "Back to You - Single",
+				"artist": "Kolidescopes",
+				"id": 112,
+				"song": "Back to You"
+			},
+			{
+				"album": "My New Friend",
+				"artist": "Carousel",
+				"id": 113,
+				"song": "My New Friend"
+			},
+			{
+				"album": "The Lumineers",
+				"artist": "The Lumineers",
+				"id": 114,
+				"song": "Ho Hey"
+			},
+			{
+				"album": "It's Strange",
+				"artist": "Louis The Child, K Flay",
+				"id": 115,
+				"song": "It's Strange"
+			},
+			{
+				"album": "Flume Deluxe Edition",
+				"artist": "Flume, Moon Holiday",
+				"id": 116,
+				"song": "Insane"
+			},
+			{
+				"album": "Say It Here, While It's Safe",
+				"artist": "Kweku Collins",
+				"id": 117,
+				"song": "Lonely Lullabies"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Karl Kling",
+				"id": 118,
+				"song": "Repeating Motion"
+			},
+			{
+				"album": "Port Of Morrow",
+				"artist": "The Shins",
+				"id": 119,
+				"song": "Simple Song"
+			},
+			{
+				"album": "Stereo Hype",
+				"artist": "VHS Collection",
+				"id": 120,
+				"song": "Ghost"
+			},
+			{
+				"album": "Year of the Caprese",
+				"artist": "Cherub",
+				"id": 121,
+				"song": "Doses And Mimosas"
+			},
+			{
+				"album": "Atlas (Remixes) - EP",
+				"artist": "Les Gordon, Douchka",
+				"id": 122,
+				"song": "Atlas - Douchka Remix"
+			},
+			{
+				"album": "Never Gonna Take You Back",
+				"artist": "Satchmode",
+				"id": 123,
+				"song": "Never Gonna Take You Back"
+			},
+			{
+				"album": "Cant Let Go, Juno",
+				"artist": "Kishi Bashi",
+				"id": 124,
+				"song": "Cant Let Go, Juno"
+			},
+			{
+				"album": "Life Itself",
+				"artist": "Glass Animals",
+				"id": 125,
+				"song": "Life Itself"
+			},
+			{
+				"album": "Wild Horses",
+				"artist": "Bishop Briggs",
+				"id": 126,
+				"song": "Wild Horses"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Pink Feathers",
+				"id": 127,
+				"song": "Seventeen"
+			},
+			{
+				"album": "Reptilians",
+				"artist": "STRFKR",
+				"id": 128,
+				"song": "Quality Time"
+			},
+			{
+				"album": "Miracle Mile",
+				"artist": "STRFKR",
+				"id": 129,
+				"song": "Atlantis"
+			},
+			{
+				"album": "Down To Earth",
+				"artist": "Flight Facilities, Giselle",
+				"id": 130,
+				"song": "Crave You"
+			},
+			{
+				"album": "Behaviors",
+				"artist": "Behaviors",
+				"id": 131,
+				"song": "Don't Fight It"
+			},
+			{
+				"album": "Show Your Colors (PLSAndTY Remix)",
+				"artist": "Genevieve, PLSAndTY",
+				"id": 132,
+				"song": "Show Your Colors (PLSAndTY Remix)"
+			},
+			{
+				"album": "Fade",
+				"artist": "Alan Walker",
+				"id": 133,
+				"song": "Fade"
+			},
+			{
+				"album": "Lessons",
+				"artist": "Holy Models",
+				"id": 134,
+				"song": "Lessons - Falcon Punch Remix"
+			},
+			{
+				"album": "Angles",
+				"artist": "The Strokes",
+				"id": 135,
+				"song": "Under Cover of Darkness"
+			},
+			{
+				"album": "Three Second Memory (Deluxe)",
+				"artist": "GoldFish",
+				"id": 136,
+				"song": "Moonwalk Away"
+			},
+			{
+				"album": "Hibou",
+				"artist": "Hibou",
+				"id": 137,
+				"song": "Dissolve"
+			},
+			{
+				"album": "Shaky Ground",
+				"artist": "Freedom Fry",
+				"id": 138,
+				"song": "Shaky Ground"
+			},
+			{
+				"album": "More Than Just A Dream",
+				"artist": "Fitz and The Tantrums",
+				"id": 139,
+				"song": "6am"
+			},
+			{
+				"album": "Hurry up, We're Dreaming",
+				"artist": "M83",
+				"id": 140,
+				"song": "Midnight City"
+			},
+			{
+				"album": "Tape Machine",
+				"artist": "STRFKR",
+				"id": 141,
+				"song": "Tape Machine"
+			},
+			{
+				"album": "Ryat",
+				"artist": "ATTLAS",
+				"id": 142,
+				"song": "Ryat"
+			},
+			{
+				"album": "Far Away",
+				"artist": "isle&fever",
+				"id": 143,
+				"song": "Far Away"
+			},
+			{
+				"album": "Give Up",
+				"artist": "The Postal Service",
+				"id": 144,
+				"song": "Clark Gable"
+			},
+			{
+				"album": "Starfucker",
+				"artist": "STRFKR",
+				"id": 145,
+				"song": "Rawnald Gregory Erickson the Second"
+			},
+			{
+				"album": "Thr!!!er",
+				"artist": "!!!",
+				"id": 146,
+				"song": "One Girl / One Boy"
+			},
+			{
+				"album": "High Love - EP",
+				"artist": "Dim Sum",
+				"id": 147,
+				"song": "High Love"
+			},
+			{
+				"album": "Oracular Spectacular",
+				"artist": "MGMT",
+				"id": 148,
+				"song": "Time to Pretend"
+			},
+			{
+				"album": "Merriweather Post Pavilion",
+				"artist": "Animal Collective",
+				"id": 149,
+				"song": "My Girls"
+			},
+			{
+				"album": "Stars",
+				"artist": "Future Generations",
+				"id": 150,
+				"song": "Stars"
+			},
+			{
+				"album": "Metaphysical",
+				"artist": "Autograf, Janelle Kroll",
+				"id": 151,
+				"song": "Metaphysical"
+			},
+			{
+				"album": "Pacific Standard Time",
+				"artist": "Poolside",
+				"id": 152,
+				"song": "Slow Down"
+			},
+			{
+				"album": "Ophelia",
+				"artist": "The Lumineers",
+				"id": 153,
+				"song": "Ophelia"
+			},
+			{
+				"album": "Illumination",
+				"artist": "Miami Horror, Alan Palomo",
+				"id": 154,
+				"song": "Holidays (feat  Alan Palomo)"
+			},
+			{
+				"album": "All We Are",
+				"artist": "All We Are",
+				"id": 155,
+				"song": "Feel Safe"
+			},
+			{
+				"album": "Raceday",
+				"artist": "Grace Mitchell",
+				"id": 156,
+				"song": "NoLo"
+			},
+			{
+				"album": "40 Watt",
+				"artist": "ELEL",
+				"id": 157,
+				"song": "40 Watt"
+			},
+			{
+				"album": "Poolside Mexico",
+				"artist": "Long Beach City Kids",
+				"id": 158,
+				"song": "Takin' Over - Original Mix"
+			},
+			{
+				"album": "My Way",
+				"artist": "Calvin Harris",
+				"id": 159,
+				"song": "My Way"
+			},
+			{
+				"album": "Nite Tales",
+				"artist": "Noirre",
+				"id": 160,
+				"song": "309"
+			},
+			{
+				"album": "Future Generations",
+				"artist": "Future Generations",
+				"id": 161,
+				"song": "Find An Answer"
+			},
+			{
+				"album": "Fiona Coyne/Fall Harder",
+				"artist": "Skylar Spence",
+				"id": 162,
+				"song": "Fiona Coyne"
+			},
+			{
+				"album": "Woodland - EP",
+				"artist": "The Paper Kites",
+				"id": 163,
+				"song": "Halcyon"
+			},
+			{
+				"album": "Rebel Era",
+				"artist": "GRiZ, The Floozies",
+				"id": 164,
+				"song": "Simple (feat  the Floozies)"
+			},
+			{
+				"album": "On Oni Pond",
+				"artist": "Man Man",
+				"id": 165,
+				"song": "Head On [Hold On To Your Heart]"
+			},
+			{
+				"album": "Smoke + Mirrors (Deluxe)",
+				"artist": "Imagine Dragons, Broiler",
+				"id": 166,
+				"song": "Shots - Broiler Remix"
+			},
+			{
+				"album": "Symmetry (Lenno Remix)",
+				"artist": "Tropic Of Pisces",
+				"id": 167,
+				"song": "Symmetry (Lenno Remix)"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Speak",
+				"id": 168,
+				"song": "I Should've Guessed"
+			},
+			{
+				"album": "Indian Summer",
+				"artist": "How Sad",
+				"id": 169,
+				"song": "Hot Blur"
+			},
+			{
+				"album": "Pacific Standard Time",
+				"artist": "Poolside",
+				"id": 170,
+				"song": "Harvest Moon"
+			},
+			{
+				"album": "Tell Me I'm Pretty",
+				"artist": "Cage The Elephant",
+				"id": 171,
+				"song": "Trouble"
+			},
+			{
+				"album": "Been There Before (Shook Remix)",
+				"artist": "Ghost Beach",
+				"id": 172,
+				"song": "Been There Before (Shook Remix)"
+			},
+			{
+				"album": "Sunset Lover",
+				"artist": "Petit Biscuit",
+				"id": 173,
+				"song": "Sunset Lover"
+			},
+			{
+				"album": "Hanging Gardens",
+				"artist": "Classixx",
+				"id": 174,
+				"song": "I'll Get You - feat  Jeppe"
+			},
+			{
+				"album": "Waiting For Love",
+				"artist": "Avicii",
+				"id": 175,
+				"song": "Waiting For Love"
+			},
+			{
+				"album": "And The Childhood Heroes",
+				"artist": "Count Counsellor",
+				"id": 176,
+				"song": "Disco Dodo"
+			},
+			{
+				"album": "Life Itself (Roosevelt Remix)",
+				"artist": "Glass Animals",
+				"id": 177,
+				"song": "Life Itself - Roosevelt Remix"
+			},
+			{
+				"album": "Polaroid Memories",
+				"artist": "Urban Cone",
+				"id": 178,
+				"song": "Sadness Disease"
+			},
+			{
+				"album": "Brighter Future",
+				"artist": "Big Gigantic, Naaz",
+				"id": 179,
+				"song": "Brighter Future (feat  Naaz)"
+			},
+			{
+				"album": "Wolfgang Amadeus Phoenix",
+				"artist": "Phoenix",
+				"id": 180,
+				"song": "1901"
+			},
+			{
+				"album": "Leisure Cruise",
+				"artist": "Leisure Cruise",
+				"id": 181,
+				"song": "Ragged Dawn"
+			},
+			{
+				"album": "California",
+				"artist": "The Lagoons",
+				"id": 182,
+				"song": "California"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Peter MorZn",
+				"id": 183,
+				"song": "All I Got"
+			},
+			{
+				"album": "My Trigger Remixes EP",
+				"artist": "Miike Snow, Indiginis",
+				"id": 184,
+				"song": "My Trigger - Indiginis Remix"
+			},
+			{
+				"album": "In Return",
+				"artist": "ODESZA, Zyra",
+				"id": 185,
+				"song": "Its Only (feat  Zyra)"
+			},
+			{
+				"album": "Hot Fuss",
+				"artist": "The Killers",
+				"id": 186,
+				"song": "Smile Like You Mean It"
+			},
+			{
+				"album": "In the Shadows",
+				"artist": "Foreign Air",
+				"id": 187,
+				"song": "In the Shadows"
+			},
+			{
+				"album": "Ruleta",
+				"artist": "Technicolor Fabrics",
+				"id": 188,
+				"song": "Ruleta"
+			},
+			{
+				"album": "Brighter Future",
+				"artist": "Big Gigantic",
+				"id": 189,
+				"song": "Bring The Funk Back"
+			},
+			{
+				"album": "Being No One, Going Nowhere",
+				"artist": "STRFKR",
+				"id": 190,
+				"song": "Tape Machine"
+			},
+			{
+				"album": "Nite Tales",
+				"artist": "Noirre",
+				"id": 191,
+				"song": "Run"
+			},
+			{
+				"album": "Headlunge",
+				"artist": "CAPYAC",
+				"id": 192,
+				"song": "Speedracer"
+			},
+			{
+				"album": "Fill Your Brains",
+				"artist": "Harrison Brome",
+				"id": 193,
+				"song": "Midnight Island"
+			},
+			{
+				"album": "Hurry Up, We're Dreaming",
+				"artist": "M83",
+				"id": 194,
+				"song": "Steve McQueen"
+			},
+			{
+				"album": "Modern Hearts",
+				"artist": "The Knocks, St  Lucia",
+				"id": 195,
+				"song": "Modern Hearts"
+			},
+			{
+				"album": "GENERATIONWHY",
+				"artist": "ZHU",
+				"id": 196,
+				"song": "Generationwhy"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Alex Ebert",
+				"id": 197,
+				"song": "Tear You Down"
+			},
+			{
+				"album": "Hurry Up, We're Dreaming",
+				"artist": "M83",
+				"id": 198,
+				"song": "Outro"
+			},
+			{
+				"album": "Year of the Caprese",
+				"artist": "Cherub",
+				"id": 199,
+				"song": "Do the Math"
+			},
+			{
+				"album": "Jacuzzi EP",
+				"artist": "Croquet Club",
+				"id": 200,
+				"song": "Jacuzzi - Original Mix"
+			},
+			{
+				"album": "Intoxicated (Radio Edit)",
+				"artist": "Martin Solveig, GTA",
+				"id": 201,
+				"song": "Intoxicated - Radio Edit"
+			},
+			{
+				"album": "Strangers",
+				"artist": "RAC, Matthew Koma",
+				"id": 202,
+				"song": "Cheap Sunglasses"
+			},
+			{
+				"album": "Tuxedo Remixes",
+				"artist": "Tuxedo",
+				"id": 203,
+				"song": "The Right Time (Jean Tonique Remix)"
+			},
+			{
+				"album": "Wolves (Remixes)",
+				"artist": "Digitalism, Youngblood Hawke",
+				"id": 204,
+				"song": "Wolves - RAC Remix"
+			},
+			{
+				"album": "Out of Touch",
+				"artist": "Brothertiger",
+				"id": 205,
+				"song": "Beyond the Infinite"
+			},
+			{
+				"album": "Satellite",
+				"artist": "STRFKR",
+				"id": 206,
+				"song": "Satellite"
 			}
 		]
 	};
+
+/***/ },
+/* 207 */
+/*!**********************************!*\
+  !*** ./src/components/Header.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = function (_React$Component) {
+		_inherits(Header, _React$Component);
+	
+		function Header() {
+			_classCallCheck(this, Header);
+	
+			return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+		}
+	
+		_createClass(Header, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'h2',
+					{ className: 'headerTitle' },
+					this.props.headerTitle
+				);
+			}
+		}]);
+	
+		return Header;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = Header;
 
 /***/ }
 /******/ ]);

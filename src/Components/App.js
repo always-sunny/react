@@ -15,26 +15,6 @@ class App extends React.Component {
     	};
   	}
 
-
-	componentDidMount(){
-    
-		axios.get('/api/music')
-			.then(resp => {
-				this.setState({
-          music: resp.data.music
-        });
-			})
-			.catch(console.error)
-		//timers,listeners
-		// this.setState({
-		// 			music: data.music
-		// 		});
-	}
-
-	componentWillUnmount(){
-		//clean timers, listeners 
-	}
-
 	render(){
   		return (
    			<div className="App">

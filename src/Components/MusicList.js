@@ -55,7 +55,7 @@ class MusicList extends React.Component {
 	   		// 	</form>
 
 	   			<div>
-	   				{this.props.music.slice(0, this.props.length).map((music) => {
+	   				{this.props.music.slice(0, 5).map((music) => {
 	   					return <Music music={music} key={music.id} />
 	   				})
 	   				
@@ -65,5 +65,6 @@ class MusicList extends React.Component {
    		)
  	}
 }
+
 
 export default MusicList;

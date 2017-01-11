@@ -22072,26 +22072,6 @@
 	  }
 	
 	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      _axios2.default.get('/api/music').then(function (resp) {
-	        _this2.setState({
-	          music: resp.data.music
-	        });
-	      }).catch(console.error);
-	      //timers,listeners
-	      // this.setState({
-	      // 			music: data.music
-	      // 		});
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      //clean timers, listeners 
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -22220,7 +22200,7 @@
 					_react2.default.createElement(
 						'div',
 						null,
-						this.props.music.slice(0, this.props.length).map(function (music) {
+						this.props.music.slice(0, 5).map(function (music) {
 							return _react2.default.createElement(_Music2.default, { music: music, key: music.id });
 						})
 					)

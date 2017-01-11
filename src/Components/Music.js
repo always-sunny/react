@@ -1,24 +1,28 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
+class Music extends React.Component {
 
+	render() {
+		return(
 
-const Music = ({music}) => 	
+			<div className="Music">
+				<div className="songName">
+					{this.props.music.id} - {this.props.music.song}
+				</div>
 
-	 <div className="Music">
-		<div className="songName">
-			{music.id} - {music.song}
+				<div className="artistName">
+					{this.props.music.artist}
+				</div>
+
+				<div className="albumName">
+					{this.props.music.album}
+				</div>
+
 		</div>
-
-		<div className="artistName">
-			{music.artist}
-		</div>
-
-		<div className="albumName">
-			{music.album}
-		</div>
-
-	</div>
-
+		)
+	}
+}
+	
 
 export default Music;

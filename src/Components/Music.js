@@ -2,11 +2,20 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 class Music extends React.Component {
+	constructor(props) {
+	    super(props);
+	   
+	    // This binding is necessary to make `this` work in the callback
+	    this.handleClick = this.handleClick.bind(this);
+	  }
 
+	  handleClick() {
+	    console.log(this.props.music)
+	  }
 	render() {
 		return(
 
-			<div className="Music">
+			<div className="link Music" onClick={this.handleClick}>
 				<div className="songName">
 					{this.props.music.id} - {this.props.music.song}
 				</div>

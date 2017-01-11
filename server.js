@@ -4,6 +4,7 @@ import express from 'express';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
 
+
 const server = express();
 
 server.use(sassMiddleware({ //sassMiddleware is a function

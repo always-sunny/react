@@ -22200,7 +22200,7 @@
 					_react2.default.createElement(
 						'div',
 						null,
-						this.props.music.slice(0, 5).map(function (music) {
+						this.props.music.slice(0, this.props.length).map(function (music) {
 							return _react2.default.createElement(_Music2.default, { music: music, key: music.id });
 						})
 					)
@@ -22247,18 +22247,27 @@
 	var Music = function (_React$Component) {
 		_inherits(Music, _React$Component);
 	
-		function Music() {
+		function Music(props) {
 			_classCallCheck(this, Music);
 	
-			return _possibleConstructorReturn(this, (Music.__proto__ || Object.getPrototypeOf(Music)).apply(this, arguments));
+			// This binding is necessary to make `this` work in the callback
+			var _this = _possibleConstructorReturn(this, (Music.__proto__ || Object.getPrototypeOf(Music)).call(this, props));
+	
+			_this.handleClick = _this.handleClick.bind(_this);
+			return _this;
 		}
 	
 		_createClass(Music, [{
+			key: 'handleClick',
+			value: function handleClick() {
+				console.log(this.props.music);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'Music' },
+					{ className: 'link Music', onClick: this.handleClick },
 					_react2.default.createElement(
 						'div',
 						{ className: 'songName' },

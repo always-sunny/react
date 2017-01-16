@@ -9,13 +9,15 @@ class MusicList extends React.Component {
   		return (
 
 	   			<div>
-	   				{this.props.music.slice(0, this.props.length).map((music) => {
+	   				{Object.keys(this.props.music).map((musicId) => {
+	   					console.log(musicId, this.props.music[musicId]);
 	   					return <Music 
-	   						music={music} 
-	   						key={music.id} 
+	   						music={this.props.music[musicId]} 
+	   						key={musicId} 
 	   						onClick={this.props.onMusicClick}
 	   						/>
-	   				})
+	   				}
+	   				)
 	   				
 	   				}
 	   			</div>

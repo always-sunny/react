@@ -22162,10 +22162,11 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					this.props.music.slice(0, this.props.length).map(function (music) {
+					Object.keys(this.props.music).map(function (musicId) {
+						console.log(musicId);
 						return _react2.default.createElement(_Music2.default, {
-							music: music,
-							key: music.id,
+							music: _this2.props.music[musicId],
+							key: musicId,
 							onClick: _this2.props.onMusicClick
 						});
 					})

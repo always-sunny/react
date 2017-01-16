@@ -10,8 +10,11 @@ class Music extends React.Component {
 	  }
 
 	  handleClick() {
-	    console.log(this.props.music)
+	    // console.log(this.props.music.id)
+	    this.props.onClick(this.props.music.id);
 	  }
+
+
 	render() {
 		return(
 

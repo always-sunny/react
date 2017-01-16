@@ -1,9 +1,13 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import MusicList from './MusicList';
-import axios from 'axios';
 import Header from './Header';
-import data from '../testData';
+
+
+
+const pushState = (obj, url) => 
+  window.history.pushState(obj, '', url);
+
 
 class App extends React.Component {
 	
@@ -15,6 +19,22 @@ class App extends React.Component {
     	};
   	}
 
+    componentDidMount() {
+
+    }
+
+    componentWillUnmount(){
+
+    }
+
+  fetchMusic(musicId) {
+    pushState(
+      {currentMusicId: musicId},
+      `/music/${musicId}`
+      );
+  };
+
+
 	render(){
   		return (
    			<div className="App">
@@ -24,7 +44,9 @@ class App extends React.Component {
     			</div>	
     			
     			<div className="Main">
-					<MusicList music={this.state.music}/>
+					 <MusicList 
+            onMusicClick={this.fetchMusic}
+            music={this.state.music}/>
     			</div>
     			
    				<div className="Footer">

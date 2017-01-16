@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 const serverRender = () =>
-	axios.get('http://localhost:8888/api/music')
+	axios.get(`${config.serverUrl}/api/music`)
 		.then(resp => {
 			return { 
 				initialMarkup: ReactDOMServer.renderToString(

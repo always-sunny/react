@@ -3,7 +3,7 @@ import React from 'react';
 import MusicList from './MusicList';
 import Header from './Header';
 import MusicFetch from './MusicFetch';
-
+import * as api from '../api';
 
 const pushState = (obj, url) => 
     window.history.pushState(obj, '', url);
@@ -34,10 +34,16 @@ class App extends React.Component {
             `/music/${musicId}`
             );
 
-        //lookup the contest
-        this.setState({
-            currentSelection: `${this.state.music[musicId].song} by ${this.state.music[musicId].artist}`,
-            currentMusicId: musicId
+        api.fetchMusic(musicId).then( music => {
+            this.setState({
+                currentSelection: `${music.song} by ${music.artist}`,
+                currentMusicId: music.id,
+                music: {
+                    ...this.state.music,
+                    [music.id]: music
+                }
+        });
+
         });
     };
 

@@ -16,4 +16,11 @@ router.get('/music', (req, res) => {
 	});
 });
 
+router.get('/music/:musicId', (req, res) => {
+	let muse = music[req.params.musicId];
+	muse.description = 'Loreum ojoyello'
+
+	res.send(muse)
+});
+
 export default router;

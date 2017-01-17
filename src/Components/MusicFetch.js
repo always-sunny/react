@@ -5,7 +5,7 @@ class MusicFetch extends React.Component {
 	render() {
 		return (
 			<div className="MusicFetch">
-				{this.props.id}
+				{this.props.description}
 			</div>
 		);
 	}

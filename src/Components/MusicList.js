@@ -10,7 +10,7 @@ class MusicList extends React.Component {
 
 	   			<div>
 	   				{Object.keys(this.props.music).map((musicId) => {
-	   					console.log(musicId, this.props.music[musicId]);
+	   					// console.log(musicId, this.props.music[musicId]);
 	   					return <Music 
 	   						music={this.props.music[musicId]} 
 	   						key={musicId} 

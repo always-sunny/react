@@ -15,6 +15,12 @@
     margin-left: 55px;
     margin-top: 55px;
     font-size: 100; }
+  .Header .currentSelection {
+    text-align: center;
+    position: relative;
+    margin-top: -115px;
+    font-size: 100px;
+    font-family: "Avenir-book"; }
 
 .main {
   padding: 3%;

@@ -22019,7 +22019,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22049,63 +22049,72 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var pushState = function pushState(obj, url) {
-	  return window.history.pushState(obj, '', url);
+	    return window.history.pushState(obj, '', url);
 	};
 	
 	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+	    _inherits(App, _React$Component);
 	
-	  function App(props) {
-	    _classCallCheck(this, App);
+	    function App(props) {
+	        _classCallCheck(this, App);
 	
-	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	    _this.state = {
-	      music: _this.props.initialMusic,
-	      headerTitle: "THE DAILY VIBE"
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {}
-	  }, {
-	    key: 'fetchMusic',
-	    value: function fetchMusic(musicId) {
-	      pushState({ currentMusicId: musicId }, '/music/' + musicId);
+	        _this.fetchMusic = _this.fetchMusic.bind(_this);
+	        _this.state = {
+	            music: _this.props.initialMusic,
+	            headerTitle: "THE DAILY VIBE",
+	            currentSelection: ''
+	        };
+	        return _this;
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'App' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'Header' },
-	          _react2.default.createElement(_Header2.default, { headerTitle: this.state.headerTitle })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'Main' },
-	          _react2.default.createElement(_MusicList2.default, {
-	            onMusicClick: this.fetchMusic,
-	            music: this.state.music })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'Footer' },
-	          '...'
-	        )
-	      );
-	    }
-	  }]);
 	
-	  return App;
+	    _createClass(App, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {}
+	    }, {
+	        key: 'fetchMusic',
+	        value: function fetchMusic(musicId) {
+	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
+	
+	            //lookup the contest
+	            this.setState({
+	                currentSelection: this.state.music[musicId].song + ' by ' + this.state.music[musicId].artist
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'App' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'Header' },
+	                    _react2.default.createElement(_Header2.default, {
+	                        headerTitle: this.state.headerTitle,
+	                        currentSelection: this.state.currentSelection })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'Main' },
+	                    _react2.default.createElement(_MusicList2.default, {
+	                        onMusicClick: this.fetchMusic,
+	                        music: this.state.music })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'Footer' },
+	                    '...'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return App;
 	}(_react2.default.Component);
 	
 	exports.default = App;
@@ -22163,7 +22172,7 @@
 					'div',
 					null,
 					Object.keys(this.props.music).map(function (musicId) {
-						console.log(musicId);
+						// console.log(musicId, this.props.music[musicId]);
 						return _react2.default.createElement(_Music2.default, {
 							music: _this2.props.music[musicId],
 							key: musicId,
@@ -22217,19 +22226,22 @@
 			_classCallCheck(this, Music);
 	
 			// This binding is necessary to make `this` work in the callback
+			// this.handleClick = this.handleClick.bind(this);
 			var _this = _possibleConstructorReturn(this, (Music.__proto__ || Object.getPrototypeOf(Music)).call(this, props));
 	
-			_this.handleClick = _this.handleClick.bind(_this);
+			_this.handleClick = function () {
+				_this.props.onClick(_this.props.music.id);
+			};
+	
 			return _this;
 		}
 	
+		// handleClick() {
+		//    // console.log(this.props.music.id)
+		//    	this.props.onClick(this.props.music.id);
+		// 	}
+	
 		_createClass(Music, [{
-			key: 'handleClick',
-			value: function handleClick() {
-				// console.log(this.props.music.id)
-				this.props.onClick(this.props.music.id);
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -22305,9 +22317,18 @@
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					'h2',
-					{ className: 'headerTitle' },
-					this.props.headerTitle
+					'div',
+					null,
+					_react2.default.createElement(
+						'h2',
+						{ className: 'headerTitle' },
+						this.props.headerTitle
+					),
+					_react2.default.createElement(
+						'h2',
+						{ className: 'currentSelection' },
+						this.props.currentSelection
+					)
 				);
 			}
 		}]);

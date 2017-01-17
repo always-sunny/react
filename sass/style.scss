@@ -6,7 +6,6 @@
 }
 
 .Header {
-
 	background-color: #fff;
   	height: 160px;
   	width: 100%;
@@ -21,6 +20,14 @@
 	    margin-left: 55px;
 	    margin-top: 55px;
 	    font-size: 100;
+	}
+
+	.currentSelection {
+		text-align: center;
+		position: relative;
+		margin-top: -115px;
+		font-size: 100px;
+		font-family: "Avenir-book";
 	}
 }
 

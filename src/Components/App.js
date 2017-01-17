@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import MusicList from './MusicList';
 import Header from './Header';
-
+import MusicFetch from './MusicFetch';
 
 
 const pushState = (obj, url) => 
@@ -13,7 +13,6 @@ class App extends React.Component {
     
     constructor(props) {
             super(props);
-            this.fetchMusic = this.fetchMusic.bind(this);
             this.state = {
                 music: this.props.initialMusic,
                 headerTitle: "THE DAILY VIBE",
@@ -29,7 +28,7 @@ class App extends React.Component {
 
         }
 
-    fetchMusic(musicId) {
+    fetchMusic = (musicId) => {
         pushState(
             {currentMusicId: musicId},
             `/music/${musicId}`
@@ -37,9 +36,19 @@ class App extends React.Component {
 
         //lookup the contest
         this.setState({
-            currentSelection: `${this.state.music[musicId].song} by ${this.state.music[musicId].artist}`
+            currentSelection: `${this.state.music[musicId].song} by ${this.state.music[musicId].artist}`,
+            currentMusicId: musicId
         });
     };
+
+    currentContent() {
+        if (this.state.currentMusicId) {
+            return <MusicFetch {...this.state.music[this.state.currentMusicId]}/>
+            }
+        return <MusicList 
+                onMusicClick={this.fetchMusic}
+                music={this.state.music}/>;
+    }
 
     render(){
             return (
@@ -52,9 +61,7 @@ class App extends React.Component {
                     </div>  
                     
                     <div className="Main">
-                     <MusicList 
-                        onMusicClick={this.fetchMusic}
-                        music={this.state.music}/>
+                        {this.currentContent()}
                     </div>
                     
                     <div className="Footer">

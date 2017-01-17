@@ -22040,6 +22040,10 @@
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
+	var _MusicFetch = __webpack_require__(/*! ./MusicFetch */ 182);
+	
+	var _MusicFetch2 = _interopRequireDefault(_MusicFetch);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22060,7 +22064,16 @@
 	
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	        _this.fetchMusic = _this.fetchMusic.bind(_this);
+	        _this.fetchMusic = function (musicId) {
+	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
+	
+	            //lookup the contest
+	            _this.setState({
+	                currentSelection: _this.state.music[musicId].song + ' by ' + _this.state.music[musicId].artist,
+	                currentMusicId: musicId
+	            });
+	        };
+	
 	        _this.state = {
 	            music: _this.props.initialMusic,
 	            headerTitle: "THE DAILY VIBE",
@@ -22076,14 +22089,14 @@
 	        key: 'componentWillUnmount',
 	        value: function componentWillUnmount() {}
 	    }, {
-	        key: 'fetchMusic',
-	        value: function fetchMusic(musicId) {
-	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
-	
-	            //lookup the contest
-	            this.setState({
-	                currentSelection: this.state.music[musicId].song + ' by ' + this.state.music[musicId].artist
-	            });
+	        key: 'currentContent',
+	        value: function currentContent() {
+	            if (this.state.currentMusicId) {
+	                return _react2.default.createElement(_MusicFetch2.default, this.state.music[this.state.currentMusicId]);
+	            }
+	            return _react2.default.createElement(_MusicList2.default, {
+	                onMusicClick: this.fetchMusic,
+	                music: this.state.music });
 	        }
 	    }, {
 	        key: 'render',
@@ -22101,9 +22114,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'Main' },
-	                    _react2.default.createElement(_MusicList2.default, {
-	                        onMusicClick: this.fetchMusic,
-	                        music: this.state.music })
+	                    this.currentContent()
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -22225,8 +22236,6 @@
 		function Music(props) {
 			_classCallCheck(this, Music);
 	
-			// This binding is necessary to make `this` work in the callback
-			// this.handleClick = this.handleClick.bind(this);
 			var _this = _possibleConstructorReturn(this, (Music.__proto__ || Object.getPrototypeOf(Music)).call(this, props));
 	
 			_this.handleClick = function () {
@@ -22235,11 +22244,6 @@
 	
 			return _this;
 		}
-	
-		// handleClick() {
-		//    // console.log(this.props.music.id)
-		//    	this.props.onClick(this.props.music.id);
-		// 	}
 	
 		_createClass(Music, [{
 			key: 'render',
@@ -22339,6 +22343,58 @@
 	;
 	
 	exports.default = Header;
+
+/***/ },
+/* 182 */
+/*!**************************************!*\
+  !*** ./src/components/MusicFetch.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MusicFetch = function (_React$Component) {
+		_inherits(MusicFetch, _React$Component);
+	
+		function MusicFetch() {
+			_classCallCheck(this, MusicFetch);
+	
+			return _possibleConstructorReturn(this, (MusicFetch.__proto__ || Object.getPrototypeOf(MusicFetch)).apply(this, arguments));
+		}
+	
+		_createClass(MusicFetch, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "MusicFetch" },
+					this.props.id
+				);
+			}
+		}]);
+	
+		return MusicFetch;
+	}(_react2.default.Component);
+	
+	exports.default = MusicFetch;
 
 /***/ }
 /******/ ]);

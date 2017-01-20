@@ -15,8 +15,6 @@ class App extends React.Component {
             super(props);
             this.state = {
                 music: this.props.initialMusic,
-                headerTitle: "THE DAILY VIBE",
-                currentSelection: ''
             };
         }
 
@@ -35,6 +33,7 @@ class App extends React.Component {
             );
 
         api.fetchMusic(musicId).then( music => {
+            console.log(music);
             this.setState({
                 currentSelection: `${music.song} by ${music.artist}`,
                 currentMusicId: music.id,
@@ -47,9 +46,17 @@ class App extends React.Component {
         });
     };
 
+    currentMusic() {
+        return this.state.music[this.state.currentMusicId];
+    }
+
+    headerTitle() {
+        return 'THE DAILY VIBE';
+    }
+
     currentContent() {
         if (this.state.currentMusicId) {
-            return <MusicFetch {...this.state.music[this.state.currentMusicId]}/>
+            return <MusicFetch {...this.currentMusic()}/>
             }
         return <MusicList 
                 onMusicClick={this.fetchMusic}
@@ -62,7 +69,7 @@ class App extends React.Component {
                     
                     <div className="Header">
                         <Header 
-                        headerTitle={this.state.headerTitle}
+                        headerTitle={this.headerTitle()}
                         currentSelection={this.state.currentSelection}/>
                     </div>  
                     

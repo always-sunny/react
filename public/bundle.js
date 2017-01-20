@@ -22078,6 +22078,7 @@
 	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
 	
 	            api.fetchMusic(musicId).then(function (music) {
+	                console.log(music);
 	                _this.setState({
 	                    currentSelection: music.song + ' by ' + music.artist,
 	                    currentMusicId: music.id,
@@ -22087,9 +22088,7 @@
 	        };
 	
 	        _this.state = {
-	            music: _this.props.initialMusic,
-	            headerTitle: "THE DAILY VIBE",
-	            currentSelection: ''
+	            music: _this.props.initialMusic
 	        };
 	        return _this;
 	    }
@@ -22101,10 +22100,20 @@
 	        key: 'componentWillUnmount',
 	        value: function componentWillUnmount() {}
 	    }, {
+	        key: 'currentMusic',
+	        value: function currentMusic() {
+	            return this.state.music[this.state.currentMusicId];
+	        }
+	    }, {
+	        key: 'headerTitle',
+	        value: function headerTitle() {
+	            return 'THE DAILY VIBE';
+	        }
+	    }, {
 	        key: 'currentContent',
 	        value: function currentContent() {
 	            if (this.state.currentMusicId) {
-	                return _react2.default.createElement(_MusicFetch2.default, this.state.music[this.state.currentMusicId]);
+	                return _react2.default.createElement(_MusicFetch2.default, this.currentMusic());
 	            }
 	            return _react2.default.createElement(_MusicList2.default, {
 	                onMusicClick: this.fetchMusic,
@@ -22120,7 +22129,7 @@
 	                    'div',
 	                    { className: 'Header' },
 	                    _react2.default.createElement(_Header2.default, {
-	                        headerTitle: this.state.headerTitle,
+	                        headerTitle: this.headerTitle(),
 	                        currentSelection: this.state.currentSelection })
 	                ),
 	                _react2.default.createElement(

@@ -5,18 +5,15 @@ import Header from './Header';
 import MusicFetch from './MusicFetch';
 import * as api from '../api';
 
-const pushState = (obj, url) => 
+const pushState = (obj, url) =>
     window.history.pushState(obj, '', url);
 
 
 class App extends React.Component {
-    
-    constructor(props) {
-            super(props);
-            this.state = {
-                music: this.props.initialMusic,
-            };
-        }
+    static propTypes = {
+        initialData: React.PropTypes.object.isRequired
+    };
+    state = this.props.initialData
 
         componentDidMount() {
 
@@ -58,7 +55,7 @@ class App extends React.Component {
         if (this.state.currentMusicId) {
             return <MusicFetch {...this.currentMusic()}/>
             }
-        return <MusicList 
+        return <MusicList
                 onMusicClick={this.fetchMusic}
                 music={this.state.music}/>;
     }
@@ -66,17 +63,17 @@ class App extends React.Component {
     render(){
             return (
                 <div className="App">
-                    
+
                     <div className="Header">
-                        <Header 
+                        <Header
                         headerTitle={this.headerTitle()}
                         currentSelection={this.state.currentSelection}/>
-                    </div>  
-                    
+                    </div>
+
                     <div className="Main">
                         {this.currentContent()}
                     </div>
-                    
+
                     <div className="Footer">
                         ...
                     </div>

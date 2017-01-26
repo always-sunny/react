@@ -11,10 +11,9 @@ import axios from 'axios';
 const serverRender = () =>
 	axios.get(`${config.serverUrl}/api/music`)
 		.then(resp => {
-			// console.log(resp);
-			return { 
+			return {
 				initialMarkup: ReactDOMServer.renderToString(
-				<App initialMusic={resp.data.music} />
+				<App initialData={resp.data} />
 				),
 				initialData: resp.data
 			};

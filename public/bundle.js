@@ -63,7 +63,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { initialMusic: window.initialData.music }), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { initialData: window.initialData }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -22069,12 +22069,18 @@
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 	
-	    function App(props) {
+	    function App() {
+	        var _ref;
+	
+	        var _temp, _this, _ret;
+	
 	        _classCallCheck(this, App);
 	
-	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
 	
-	        _this.fetchMusic = function (musicId) {
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = _this.props.initialData, _this.fetchMusic = function (musicId) {
 	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
 	
 	            api.fetchMusic(musicId).then(function (music) {
@@ -22085,12 +22091,7 @@
 	                    music: _extends({}, _this.state.music, _defineProperty({}, music.id, music))
 	                });
 	            });
-	        };
-	
-	        _this.state = {
-	            music: _this.props.initialMusic
-	        };
-	        return _this;
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
 	    _createClass(App, [{
@@ -22149,6 +22150,9 @@
 	    return App;
 	}(_react2.default.Component);
 	
+	App.propTypes = {
+	    initialData: _react2.default.PropTypes.object.isRequired
+	};
 	exports.default = App;
 
 /***/ },
@@ -22438,6 +22442,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var fetchMusic = exports.fetchMusic = function fetchMusic(musicId) {
+	
 		return _axios2.default.get('/api/music/' + musicId).then(function (resp) {
 			return resp.data;
 		});

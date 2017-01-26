@@ -4,6 +4,6 @@ import App from './components/App';
 
 
 ReactDOM.render(
-	<App initialMusic={window.initialData.music}/>,
+	<App initialData={window.initialData}/>,
 	document.getElementById('root')
 );﻿

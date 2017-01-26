@@ -22126,23 +22126,10 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'App' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'Header' },
-	                    _react2.default.createElement(_Header2.default, {
-	                        headerTitle: this.headerTitle(),
-	                        currentSelection: this.state.currentSelection })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'Main' },
-	                    this.currentContent()
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'Footer' },
-	                    '...'
-	                )
+	                _react2.default.createElement(_Header2.default, {
+	                    headerTitle: this.headerTitle(),
+	                    currentSelection: this.state.currentSelection }),
+	                this.currentContent()
 	            );
 	        }
 	    }]);

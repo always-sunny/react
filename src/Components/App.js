@@ -15,13 +15,13 @@ class App extends React.Component {
     };
     state = this.props.initialData
 
-        componentDidMount() {
+    componentDidMount() {
 
-        }
+    }
 
-        componentWillUnmount(){
+    componentWillUnmount(){
 
-        }
+    }
 
     fetchMusic = (musicId) => {
         pushState(
@@ -38,7 +38,7 @@ class App extends React.Component {
                     ...this.state.music,
                     [music.id]: music
                 }
-        });
+            });
 
         });
     };
@@ -63,24 +63,13 @@ class App extends React.Component {
     render(){
             return (
                 <div className="App">
-
-                    <div className="Header">
-                        <Header
+                    <Header
                         headerTitle={this.headerTitle()}
                         currentSelection={this.state.currentSelection}/>
-                    </div>
-
-                    <div className="Main">
-                        {this.currentContent()}
-                    </div>
-
-                    <div className="Footer">
-                        ...
-                    </div>
-
+                    {this.currentContent()}
                 </div>
             )
-    }
+        }
 }
 
 

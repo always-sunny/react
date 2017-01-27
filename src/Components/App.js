@@ -8,6 +8,9 @@ import * as api from '../api';
 const pushState = (obj, url) =>
     window.history.pushState(obj, '', url);
 
+const onPopState = handler => {
+    window.onpopstate = handler;
+    };
 
 class App extends React.Component {
     static propTypes = {
@@ -16,11 +19,18 @@ class App extends React.Component {
     state = this.props.initialData
 
     componentDidMount() {
-
+        console.log('mounted');
+        onPopState((event) => {
+            console.log(event.state);
+            this.setState({
+                currentMusicId: (event.state || {}).currentMusicId
+            });
+        });
     }
 
     componentWillUnmount(){
-
+        console.log('unMounted');
+        onPopState(null);
     }
 
     fetchMusic = (musicId) => {

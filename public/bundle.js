@@ -22066,6 +22066,10 @@
 	    return window.history.pushState(obj, '', url);
 	};
 	
+	var onPopState = function onPopState(handler) {
+	    window.onpopstate = handler;
+	};
+	
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 	
@@ -22105,10 +22109,23 @@
 	
 	    _createClass(App, [{
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
+	        value: function componentDidMount() {
+	            var _this2 = this;
+	
+	            console.log('mounted');
+	            onPopState(function (event) {
+	                console.log(event.state);
+	                _this2.setState({
+	                    currentMusicId: (event.state || {}).currentMusicId
+	                });
+	            });
+	        }
 	    }, {
 	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
+	        value: function componentWillUnmount() {
+	            console.log('unMounted');
+	            onPopState(null);
+	        }
 	    }, {
 	        key: 'currentMusic',
 	        value: function currentMusic() {

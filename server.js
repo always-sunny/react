@@ -16,11 +16,11 @@ server.set('view engine', 'ejs');
 
 import serverRender from './serverRender';
 
-server.get('/', (req, res) => {
-	serverRender()
+server.get(['/', '/music/:musicId'], (req, res) => {
+	serverRender(req.params.musicId)
 		.then(({initialMarkup, initialData}) => {
 			res.render('index', {
-		initialMarkup, 
+		initialMarkup,
 		initialData
 		});
 	})

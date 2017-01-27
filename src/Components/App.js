@@ -30,7 +30,7 @@ class App extends React.Component {
             );
 
         api.fetchMusic(musicId).then( music => {
-            console.log(music);
+            // console.log(music);
             this.setState({
                 currentSelection: `${music.song} by ${music.artist}`,
                 currentMusicId: music.id,
@@ -66,7 +66,9 @@ class App extends React.Component {
                     <Header
                         headerTitle={this.headerTitle()}
                         currentSelection={this.state.currentSelection}/>
+                    <div className="mainContainer">
                     {this.currentContent()}
+                    </div>
                 </div>
             )
         }

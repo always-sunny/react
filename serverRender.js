@@ -8,14 +8,41 @@ import config from './config';
 import axios from 'axios';
 
 
-const serverRender = () =>
-	axios.get(`${config.serverUrl}/api/music`)
+const getApiUrl = (musicId) => {
+	if (musicId) {
+		console.log(`${config.serverUrl}/api/music/${musicId}`);
+		return `${config.serverUrl}/api/music/${musicId}`;
+	}
+	console.log(`${config.serverUrl}/api/music`);
+	return `${config.serverUrl}/api/music`;
+};
+
+
+const getInitialData = (musicId, apiData) => {
+	if (musicId){
+
+		return {
+			currentMusicId: apiData.id,
+			music: {
+				[apiData.id]: apiData
+			}
+
+		};
+	}
+	return {
+		music: apiData.music
+	}
+};
+
+const serverRender = (musicId) =>
+	axios.get(getApiUrl(musicId))
 		.then(resp => {
+			const initialData = getInitialData(musicId, resp.data);
 			return {
 				initialMarkup: ReactDOMServer.renderToString(
-				<App initialData={resp.data} />
+				<App initialData={initialData} />
 				),
-				initialData: resp.data
+				initialData
 			};
 		});
 

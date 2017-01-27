@@ -22084,7 +22084,7 @@
 	            pushState({ currentMusicId: musicId }, '/music/' + musicId);
 	
 	            api.fetchMusic(musicId).then(function (music) {
-	                console.log(music);
+	                // console.log(music);
 	                _this.setState({
 	                    currentSelection: music.song + ' by ' + music.artist,
 	                    currentMusicId: music.id,
@@ -22129,7 +22129,11 @@
 	                _react2.default.createElement(_Header2.default, {
 	                    headerTitle: this.headerTitle(),
 	                    currentSelection: this.state.currentSelection }),
-	                this.currentContent()
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'mainContainer' },
+	                    this.currentContent()
+	                )
 	            );
 	        }
 	    }]);
@@ -22193,7 +22197,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'MusicList' },
 					Object.keys(this.props.music).map(function (musicId) {
 						// console.log(musicId, this.props.music[musicId]);
 						return _react2.default.createElement(_Music2.default, {
@@ -22299,7 +22303,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22321,35 +22325,80 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Header = function (_React$Component) {
-		_inherits(Header, _React$Component);
+	  _inherits(Header, _React$Component);
 	
-		function Header() {
-			_classCallCheck(this, Header);
+	  function Header() {
+	    _classCallCheck(this, Header);
 	
-			return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+	  }
 	
-		_createClass(Header, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h2',
-						{ className: 'headerTitle' },
-						this.props.headerTitle
-					),
-					_react2.default.createElement(
-						'h2',
-						{ className: 'currentSelection' },
-						this.props.currentSelection
-					)
-				);
-			}
-		}]);
+	  _createClass(Header, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'nav',
+	        { className: 'navbar navbar-default navbar-fixed-top' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'navbar-header' },
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'sr-only' },
+	                'Toggle navigation'
+	              ),
+	              _react2.default.createElement('span', { className: 'icon-bar' }),
+	              _react2.default.createElement('span', { className: 'icon-bar' }),
+	              _react2.default.createElement('span', { className: 'icon-bar' })
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'navbar-brand', href: '/' },
+	              'Project name'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'navbar', className: 'navbar-collapse collapse' },
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'nav navbar-nav navbar-right' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { href: '#' },
+	                  'Login'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { href: '#' },
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'signUp' },
+	                    'Sign Up'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 	
-		return Header;
+	  return Header;
 	}(_react2.default.Component);
 	
 	;
@@ -22398,7 +22447,11 @@
 				return _react2.default.createElement(
 					"div",
 					{ className: "MusicFetch" },
-					this.props.description
+					_react2.default.createElement(
+						"div",
+						{ className: "music-description" },
+						this.props.description
+					)
 				);
 			}
 		}]);

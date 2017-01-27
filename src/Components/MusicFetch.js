@@ -8,7 +8,7 @@ class MusicFetch extends React.Component {
 			<div className="MusicFetch">
 
                 <div className="music-description">{this.props.description}</div>
-                {/* <div className="home-link link" onClick={this.props.musicListClick}>Return</div> */}
+                <div className="home-link link" onClick={this.props.musicListClick}>Return</div>
 
 			</div>
 		);

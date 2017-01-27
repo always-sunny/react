@@ -22091,6 +22091,15 @@
 	                    music: _extends({}, _this.state.music, _defineProperty({}, music.id, music))
 	                });
 	            });
+	        }, _this.fetchMusicList = function () {
+	            pushState({ currentMusicId: null }, '/');
+	
+	            api.fetchMusicList().then(function (music) {
+	                _this.setState({
+	                    currentMusicId: null,
+	                    music: music
+	                });
+	            });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
@@ -22114,7 +22123,9 @@
 	        key: 'currentContent',
 	        value: function currentContent() {
 	            if (this.state.currentMusicId) {
-	                return _react2.default.createElement(_MusicFetch2.default, this.currentMusic());
+	                return _react2.default.createElement(_MusicFetch2.default, _extends({
+	                    musicListClick: this.fetchMusicList
+	                }, this.currentMusic()));
 	            }
 	            return _react2.default.createElement(_MusicList2.default, {
 	                onMusicClick: this.fetchMusic,
@@ -22451,6 +22462,11 @@
 						"div",
 						{ className: "music-description" },
 						this.props.description
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "home-link link", onClick: this.props.musicListClick },
+						"Return"
 					)
 				);
 			}
@@ -22473,7 +22489,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.fetchMusic = undefined;
+	exports.fetchMusicList = exports.fetchMusic = undefined;
 	
 	var _axios = __webpack_require__(/*! axios */ 184);
 	
@@ -22482,9 +22498,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var fetchMusic = exports.fetchMusic = function fetchMusic(musicId) {
-	
 		return _axios2.default.get('/api/music/' + musicId).then(function (resp) {
 			return resp.data;
+		});
+	};
+	
+	var fetchMusicList = exports.fetchMusicList = function fetchMusicList() {
+		return _axios2.default.get('api/music').then(function (resp) {
+			return resp.data.music;
 		});
 	};
 

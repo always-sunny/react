@@ -43,6 +43,20 @@ class App extends React.Component {
         });
     };
 
+    fetchMusicList = () => {
+        pushState(
+            {currentMusicId: null},
+            `/`
+            );
+
+        api.fetchMusicList().then( music => {
+            this.setState({
+                currentMusicId: null,
+                music
+            });
+        });
+    };
+
     currentMusic() {
         return this.state.music[this.state.currentMusicId];
     }
@@ -53,7 +67,9 @@ class App extends React.Component {
 
     currentContent() {
         if (this.state.currentMusicId) {
-            return <MusicFetch {...this.currentMusic()}/>
+            return <MusicFetch
+                musicListClick={this.fetchMusicList}
+                {...this.currentMusic()}/>
             }
         return <MusicList
                 onMusicClick={this.fetchMusic}
